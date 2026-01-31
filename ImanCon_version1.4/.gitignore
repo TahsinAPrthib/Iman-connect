@@ -26,6 +26,12 @@ hs_err_pid*.log
 .idea/
 *.iml
 .vscode/
+.cursor/
+
+# Windows reserved names
+nul
+con
+prn
 *.swp
 *.swo
 *~
