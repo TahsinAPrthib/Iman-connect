@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.text.*?>
+
+<ScrollPane xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" 
+            fx:controller="com.faithapp.controllers.FastTrackerController"
+            styleClass="fast-tracker-scroll"
+            fitToWidth="true"
+            hbarPolicy="NEVER"
+            vbarPolicy="AS_NEEDED">
+    
+    <VBox styleClass="fast-tracker-main" spacing="25">
+        <padding>
+            <Insets top="30" right="30" bottom="30" left="30"/>
+        </padding>
+
+        <!-- Header Section -->
+        <HBox alignment="CENTER_LEFT" spacing="20" styleClass="header-section">
+            <Button fx:id="backButton" text="← Back to Dashboard" onAction="#handleBackToDashboard"
+                    styleClass="back-button"/>
+            <VBox spacing="5">
+                <Label text="🌙 Fast Tracker" styleClass="main-title"/>
+                <Label text="Track your fasting journey with dedication" styleClass="subtitle"/>
+            </VBox>
+        </HBox>
+
+        <!-- Progress Cards Section -->
+        <HBox spacing="20" alignment="CENTER">
+            <!-- Total Fasts Card -->
+            <VBox styleClass="progress-card" spacing="10">
+                <Label text="📊" styleClass="card-icon"/>
+                <Label fx:id="totalFastsLabel" text="0" styleClass="card-number"/>
+                <Label text="Total Fasts" styleClass="card-label"/>
+            </VBox>
+            
+            <!-- Completed Fasts Card -->
+            <VBox styleClass="progress-card" spacing="10">
+                <Label text="✅" styleClass="card-icon"/>
+                <Label fx:id="completedFastsLabel" text="0" styleClass="card-number"/>
+                <Label text="Completed" styleClass="card-label"/>
+            </VBox>
+            
+            <!-- Success Rate Card -->
+            <VBox styleClass="progress-card" spacing="10">
+                <Label text="📈" styleClass="card-icon"/>
+                <Label fx:id="successRateLabel" text="0%" styleClass="card-number"/>
+                <Label text="Success Rate" styleClass="card-label"/>
+            </VBox>
+        </HBox>
+
+        <!-- Main Content Section -->
+        <HBox spacing="25" alignment="TOP_CENTER">
+            <!-- Left Column - Calendar & Status -->
+            <VBox spacing="20" styleClass="content-section">
+                <!-- Calendar Section -->
+                <VBox spacing="15" styleClass="section-card">
+                    <Label text="📅 Select Date" styleClass="section-title"/>
+                    <DatePicker fx:id="datePicker" styleClass="modern-date-picker"/>
+                </VBox>
+
+                <!-- Fast Status Section -->
+                <VBox spacing="15" styleClass="section-card">
+                    <Label text="🕐 Fast Status" styleClass="section-title"/>
+                    
+                    <VBox spacing="12" styleClass="radio-group">
+                        <RadioButton fx:id="fastCompletedRadio" text="✅ Completed Fast" 
+                                    styleClass="status-radio" toggleGroup="$fastStatus"/>
+                        <RadioButton fx:id="fastMissedRadio" text="❌ Missed Fast"
+                                    styleClass="status-radio" toggleGroup="$fastStatus"/>
+                        <RadioButton fx:id="fastExemptRadio" text="🏥 Exempt (Health/Other)"
+                                    styleClass="status-radio" toggleGroup="$fastStatus"/>
+                    </VBox>
+                    
+                    <VBox spacing="8">
+                        <Label text="📝 Notes (Optional)" styleClass="input-label"/>
+                        <TextArea fx:id="notesArea" promptText="Add any notes about your fast..."
+                                  styleClass="modern-textarea" prefRowCount="3"/>
+                    </VBox>
+                    
+                    <Button fx:id="saveButton" text="💾 Save Fast Status" onAction="#handleSave"
+                            styleClass="primary-button"/>
+                </VBox>
+            </VBox>
+
+            <!-- Right Column - Statistics & Progress -->
+            <VBox spacing="20" styleClass="content-section">
+                <!-- Detailed Statistics -->
+                <VBox spacing="15" styleClass="section-card">
+                    <Label text="📊 Detailed Statistics" styleClass="section-title"/>
+                    
+                    <VBox spacing="12" styleClass="stats-grid">
+                        <HBox styleClass="stat-row">
+                            <Label text="Total Fasts:" styleClass="stat-label"/>
+                            <Label fx:id="totalFastsLabel2" text="0" styleClass="stat-value"/>
+                        </HBox>
+                        <HBox styleClass="stat-row">
+                            <Label text="Completed:" styleClass="stat-label"/>
+                            <Label fx:id="completedFastsLabel2" text="0" styleClass="stat-value"/>
+                        </HBox>
+                        <HBox styleClass="stat-row">
+                            <Label text="Missed:" styleClass="stat-label"/>
+                            <Label fx:id="missedFastsLabel2" text="0" styleClass="stat-value"/>
+                        </HBox>
+                        <HBox styleClass="stat-row">
+                            <Label text="Exempt:" styleClass="stat-label"/>
+                            <Label fx:id="exemptFastsLabel2" text="0" styleClass="stat-value"/>
+                        </HBox>
+                    </VBox>
+                </VBox>
+
+                <!-- Monthly Progress -->
+                <VBox spacing="15" styleClass="section-card">
+                    <Label text="📈 Monthly Progress" styleClass="section-title"/>
+                    
+                    <VBox spacing="10" alignment="CENTER">
+                        <HBox styleClass="progress-header">
+                            <Label text="This Month:" styleClass="progress-label"/>
+                            <Label fx:id="monthlyProgressLabel" text="0/30" styleClass="progress-value"/>
+                        </HBox>
+                        <ProgressBar fx:id="monthlyProgress" progress="0.0" styleClass="modern-progress-bar"/>
+                        <Label fx:id="monthlyPercentageLabel" text="0%" styleClass="progress-percentage"/>
+                    </VBox>
+                </VBox>
+
+                <!-- Quick Actions -->
+                <VBox spacing="15" styleClass="section-card">
+                    <Label text="⚡ Quick Actions" styleClass="section-title"/>
+                    
+                    <VBox spacing="10">
+                        <Button text="📊 View Detailed Report" onAction="#handleViewDetailedReport" styleClass="secondary-button"/>
+                        <Button text="🎯 Set Monthly Goal" onAction="#handleSetMonthlyGoal" styleClass="secondary-button"/>
+                        <Button text="📱 Export Data" onAction="#handleExportData" styleClass="secondary-button"/>
+                    </VBox>
+                </VBox>
+            </VBox>
+        </HBox>
+    </VBox>
+</ScrollPane> 

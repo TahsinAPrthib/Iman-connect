@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.text.Text?>
+
+<VBox spacing="20" alignment="TOP_CENTER" styleClass="islamic-tracker" xmlns:fx="http://javafx.com/fxml" fx:controller="com.faithapp.controllers.IslamicTrackerController">
+    <padding>
+        <Insets top="20" right="20" bottom="20" left="20"/>
+    </padding>
+
+    <TabPane VBox.vgrow="ALWAYS">
+        <Tab text="Ramadan Fasting" closable="false">
+            <VBox spacing="10">
+                <HBox spacing="10" alignment="CENTER">
+                    <Label text="Year:"/>
+                    <ComboBox fx:id="ramadanYearCombo"/>
+                    <Label text="Day:"/>
+                    <ComboBox fx:id="ramadanDayCombo"/>
+                </HBox>
+                <GridPane fx:id="ramadanGrid" hgap="10" vgap="10" alignment="CENTER">
+                    <!-- Days will be added programmatically -->
+                </GridPane>
+                <TextArea fx:id="ramadanNotes" promptText="Add notes about your fast..." />
+                <Button text="Save Ramadan Entry" onAction="#saveRamadanEntry" styleClass="primary-button"/>
+            </VBox>
+        </Tab>
+
+        <Tab text="Salah Tracker" closable="false">
+            <VBox spacing="10">
+                <DatePicker fx:id="salahDate" promptText="Select Date"/>
+                <GridPane hgap="10" vgap="10">
+                    <CheckBox text="Fajr" fx:id="fajrCheck" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+                    <CheckBox text="Dhuhr" fx:id="dhuhrCheck" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+                    <CheckBox text="Asr" fx:id="asrCheck" GridPane.columnIndex="2" GridPane.rowIndex="0"/>
+                    <CheckBox text="Maghrib" fx:id="maghribCheck" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+                    <CheckBox text="Isha" fx:id="ishaCheck" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+                </GridPane>
+                <TextArea fx:id="salahNotes" promptText="Add notes about your prayers..."/>
+                <Button text="Save Prayer Entry" onAction="#saveSalahEntry" styleClass="primary-button"/>
+                <TableView fx:id="salahHistoryTable" VBox.vgrow="ALWAYS">
+                    <columns>
+                        <TableColumn text="Date" fx:id="salahDateColumn"/>
+                        <TableColumn text="Fajr" fx:id="fajrColumn"/>
+                        <TableColumn text="Dhuhr" fx:id="dhuhrColumn"/>
+                        <TableColumn text="Asr" fx:id="asrColumn"/>
+                        <TableColumn text="Maghrib" fx:id="maghribColumn"/>
+                        <TableColumn text="Isha" fx:id="ishaColumn"/>
+                    </columns>
+                </TableView>
+            </VBox>
+        </Tab>
+
+        <Tab text="Quran Tracker" closable="false">
+            <VBox spacing="10">
+                <DatePicker fx:id="quranDate" promptText="Select Date"/>
+                <HBox spacing="10">
+                    <ComboBox fx:id="surahCombo" promptText="Select Surah"/>
+                    <TextField fx:id="ayahFromField" promptText="Ayah From"/>
+                    <TextField fx:id="ayahToField" promptText="Ayah To"/>
+                    <TextField fx:id="durationField" promptText="Duration (mins)"/>
+                </HBox>
+                <TextArea fx:id="quranNotes" promptText="Add notes about your recitation..."/>
+                <Button text="Save Quran Entry" onAction="#saveQuranEntry" styleClass="primary-button"/>
+                <TableView fx:id="quranHistoryTable" VBox.vgrow="ALWAYS">
+                    <columns>
+                        <TableColumn text="Date" fx:id="quranDateColumn"/>
+                        <TableColumn text="Surah" fx:id="surahColumn"/>
+                        <TableColumn text="From" fx:id="ayahFromColumn"/>
+                        <TableColumn text="To" fx:id="ayahToColumn"/>
+                        <TableColumn text="Duration" fx:id="durationColumn"/>
+                    </columns>
+                </TableView>
+            </VBox>
+        </Tab>
+
+        <Tab text="Zikr Tracker" closable="false">
+            <VBox spacing="10">
+                <DatePicker fx:id="zikrDate" promptText="Select Date"/>
+                <HBox spacing="10" alignment="CENTER">
+                    <RadioButton text="Morning" fx:id="morningRadio" toggleGroup="$zikrPeriod"/>
+                    <RadioButton text="Evening" fx:id="eveningRadio" toggleGroup="$zikrPeriod"/>
+                </HBox>
+                <CheckBox text="Completed" fx:id="zikrCompleted"/>
+                <TextArea fx:id="zikrNotes" promptText="Add notes about your zikr..."/>
+                <Button text="Save Zikr Entry" onAction="#saveZikrEntry" styleClass="primary-button"/>
+                <TableView fx:id="zikrHistoryTable" VBox.vgrow="ALWAYS">
+                    <columns>
+                        <TableColumn text="Date" fx:id="zikrDateColumn"/>
+                        <TableColumn text="Period" fx:id="periodColumn"/>
+                        <TableColumn text="Completed" fx:id="completedColumn"/>
+                    </columns>
+                </TableView>
+            </VBox>
+        </Tab>
+    </TabPane>
+</VBox> 

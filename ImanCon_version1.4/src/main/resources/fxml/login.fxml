@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.text.Text?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.Group?>
+
+<StackPane xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
+         fx:controller="com.faithapp.controllers.LoginController">
+    
+    <!-- Beautiful Mosque-inspired Background -->
+    <Rectangle width="1920" height="1080" 
+               style="-fx-fill: linear-gradient(to bottom, #1e3c72, #2a5298, #667eea, #764ba2);"/>
+    
+    <!-- Mosque dome effect using radial gradients -->
+    <Rectangle width="1920" height="1080" 
+               style="-fx-fill: radial-gradient(center 50% 30%, radius 40%, rgba(255,215,0,0.2) 0%, rgba(255,215,0,0.1) 30%, transparent 60%);"/>
+    
+    <!-- Star pattern overlay for spiritual atmosphere -->
+    <Rectangle width="1920" height="1080" 
+               style="-fx-fill: radial-gradient(center 20% 20%, radius 2%, rgba(255,255,255,0.8) 0%, transparent 100%),
+                      radial-gradient(center 80% 15%, radius 1.5%, rgba(255,255,255,0.6) 0%, transparent 100%),
+                      radial-gradient(center 40% 80%, radius 1%, rgba(255,255,255,0.7) 0%, transparent 100%),
+                      radial-gradient(center 90% 70%, radius 1.5%, rgba(255,255,255,0.5) 0%, transparent 100%),
+                      radial-gradient(center 10% 60%, radius 1%, rgba(255,255,255,0.6) 0%, transparent 100%);"/>
+    
+    <!-- Additional decorative overlay -->
+    <Rectangle width="1920" height="1080" 
+               style="-fx-fill: linear-gradient(to bottom, rgba(0,0,0,0.1), rgba(0,0,0,0.3));"/>
+    
+    <!-- Login Content -->
+    <VBox alignment="CENTER" spacing="20">
+        <padding>
+            <Insets top="20" right="40" bottom="20" left="40"/>
+        </padding>
+
+        <Text text="ImanConnect" 
+              style="-fx-font-size: 48; 
+                     -fx-font-weight: bold; 
+                     -fx-fill: #ffffff; 
+                     -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.5), 10, 0, 0, 0);"/>
+        
+        <VBox spacing="15" maxWidth="350" 
+              style="-fx-background-color: rgba(255,255,255,0.95); 
+                     -fx-padding: 30; 
+                     -fx-background-radius: 20;
+                     -fx-border-radius: 20;
+                     -fx-border-color: #2196F3;
+                     -fx-border-width: 2;
+                     -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.3), 15, 0, 0, 0);">
+            
+            <TextField fx:id="usernameField" promptText="Username" 
+                      style="-fx-background-color: #ffffff;
+                             -fx-text-fill: #222222;
+                             -fx-prompt-text-fill: #888888;
+                             -fx-background-radius: 8; 
+                             -fx-font-size: 14;
+                             -fx-padding: 12 18;
+                             -fx-border-color: #e0e0e0;
+                             -fx-border-width: 1;
+                             -fx-border-radius: 8;"/>
+                             
+            <PasswordField fx:id="passwordField" promptText="Password" 
+                          style="-fx-background-color: #ffffff;
+                                 -fx-text-fill: #222222;
+                                 -fx-prompt-text-fill: #888888;
+                                 -fx-background-radius: 8; 
+                                 -fx-font-size: 14;
+                                 -fx-padding: 12 18;
+                                 -fx-border-color: #e0e0e0;
+                                 -fx-border-width: 1;
+                                 -fx-border-radius: 8;"/>
+            
+            <HBox spacing="10" alignment="CENTER">
+                <Button fx:id="loginButton" text="Login" onAction="#handleLogin"
+                        style="-fx-background-color: #2196F3; 
+                               -fx-text-fill: white; 
+                               -fx-font-size: 14; 
+                               -fx-font-weight: bold;
+                               -fx-padding: 12 35; 
+                               -fx-background-radius: 8;
+                               -fx-cursor: hand;
+                               -fx-effect: dropshadow(gaussian, rgba(33,150,243,0.3), 5, 0, 0, 0);"/>
+                               
+                <Button fx:id="registerButton" text="Register" onAction="#handleRegister" 
+                        style="-fx-background-color: transparent;
+                               -fx-border-color: #2196F3;
+                               -fx-border-width: 2;
+                               -fx-text-fill: #2196F3; 
+                               -fx-font-size: 14; 
+                               -fx-font-weight: bold;
+                               -fx-padding: 12 35; 
+                               -fx-background-radius: 8;
+                               -fx-border-radius: 8;
+                               -fx-cursor: hand;"/>
+            </HBox>
+            
+            <Separator style="-fx-background-color: #cccccc; -fx-padding: 5 0;"/>
+            
+            <Button fx:id="scholarLoginButton" text="Scholar Login" onAction="#handleScholarLogin"
+                    style="-fx-background-color: #4CAF50; 
+                           -fx-text-fill: white; 
+                           -fx-font-size: 14; 
+                           -fx-font-weight: bold;
+                           -fx-padding: 12 35; 
+                           -fx-background-radius: 8;
+                           -fx-cursor: hand;
+                           -fx-effect: dropshadow(gaussian, rgba(76,175,80,0.3), 5, 0, 0, 0);"/>
+        </VBox>
+        
+        <Label fx:id="messageLabel" 
+               style="-fx-text-fill: #FF5252; 
+                      -fx-font-weight: bold;
+                      -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.5), 3, 0, 0, 0);"/>
+    </VBox>
+</StackPane> 

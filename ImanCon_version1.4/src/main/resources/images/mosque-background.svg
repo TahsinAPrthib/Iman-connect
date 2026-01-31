@@ -1,0 +1,15 @@
+<svg width="1920" height="1080" viewBox="0 0 1920 1080" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1920" height="1080" fill="#e3eafc"/>
+  <ellipse cx="960" cy="900" rx="800" ry="180" fill="#b3c6e7"/>
+  <rect x="660" y="700" width="600" height="200" rx="30" fill="#fff" stroke="#b3c6e7" stroke-width="8"/>
+  <rect x="900" y="600" width="120" height="100" rx="20" fill="#fff" stroke="#b3c6e7" stroke-width="6"/>
+  <ellipse cx="960" cy="600" rx="60" ry="40" fill="#f7d774" stroke="#b3c6e7" stroke-width="6"/>
+  <rect x="1040" y="750" width="60" height="150" rx="20" fill="#f7d774" stroke="#b3c6e7" stroke-width="6"/>
+  <rect x="820" y="750" width="60" height="150" rx="20" fill="#f7d774" stroke="#b3c6e7" stroke-width="6"/>
+  <rect x="760" y="800" width="40" height="100" rx="10" fill="#b3c6e7"/>
+  <rect x="1120" y="800" width="40" height="100" rx="10" fill="#b3c6e7"/>
+  <rect x="960" y="500" width="16" height="60" fill="#b3c6e7"/>
+  <ellipse cx="968" cy="500" rx="28" ry="18" fill="#f7d774" stroke="#b3c6e7" stroke-width="4"/>
+  <ellipse cx="968" cy="490" rx="10" ry="6" fill="#b3c6e7"/>
+  <text x="960" y="1050" text-anchor="middle" font-size="48" fill="#b3c6e7" font-family="Segoe UI, Arial">ImanConnect</text>
+</svg> 

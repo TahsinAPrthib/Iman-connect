@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import java.net.URL?>
+
+<VBox xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" 
+      fx:controller="com.faithapp.controllers.QuranTrackerController"
+      styleClass="quran-tracker-main"
+      VBox.vgrow="ALWAYS">
+    
+    <!-- Fixed Header Section -->
+    <HBox alignment="CENTER_LEFT" spacing="20" styleClass="header-section">
+        <Button text="← Back to Dashboard" onAction="#handleBackToDashboard"
+                styleClass="back-button"/>
+        <VBox spacing="5">
+            <Label text="📖 Quran Tracker" styleClass="main-title"/>
+            <Label text="Track your Quran reading progress and daily goals" styleClass="subtitle"/>
+        </VBox>
+        <Region HBox.hgrow="ALWAYS"/>
+        <VBox alignment="CENTER_RIGHT" spacing="5">
+            <Label fx:id="dateLabel" text="Today's Date" styleClass="date-label"/>
+            <Button text="📖 Open Quran Text Viewer" 
+                    onAction="#handleOpenTextViewer"
+                    styleClass="primary-button"/>
+        </VBox>
+    </HBox>
+    
+    <!-- Scrollable Main Content -->
+    <ScrollPane fitToWidth="true" styleClass="main-scroll-pane" VBox.vgrow="ALWAYS">
+        <VBox spacing="25" styleClass="main-content">
+            <padding>
+                <Insets top="30" right="30" bottom="30" left="30"/>
+            </padding>
+            
+            <!-- Progress Overview Cards -->
+            <HBox spacing="20" styleClass="progress-cards">
+                <!-- Overall Progress Card -->
+                <VBox styleClass="progress-card" HBox.hgrow="ALWAYS">
+                    <HBox alignment="CENTER_LEFT" spacing="15">
+                        <Label text="📊" styleClass="card-icon"/>
+                        <VBox spacing="5">
+                            <Label text="Overall Progress" styleClass="card-title"/>
+                            <Label text="Complete Quran Journey" styleClass="card-subtitle"/>
+                        </VBox>
+                    </HBox>
+                    <ProgressBar fx:id="overallProgress" progress="0.0" styleClass="main-progress-bar"/>
+                    <HBox spacing="20" styleClass="stats-row">
+                        <VBox alignment="CENTER" styleClass="stat-item">
+                            <Label fx:id="completedSurahLabel" text="0" styleClass="stat-number"/>
+                            <Label text="Surahs" styleClass="stat-label"/>
+                        </VBox>
+                        <VBox alignment="CENTER" styleClass="stat-item">
+                            <Label fx:id="pagesReadLabel" text="0" styleClass="stat-number"/>
+                            <Label text="Pages" styleClass="stat-label"/>
+                        </VBox>
+                        <VBox alignment="CENTER" styleClass="stat-item">
+                            <Label fx:id="estimatedTimeLabel" text="0h" styleClass="stat-number"/>
+                            <Label text="Time" styleClass="stat-label"/>
+                        </VBox>
+                    </HBox>
+                </VBox>
+                
+                <!-- Daily Progress Card -->
+                <VBox styleClass="progress-card" HBox.hgrow="ALWAYS">
+                    <HBox alignment="CENTER_LEFT" spacing="15">
+                        <Label text="📅" styleClass="card-icon"/>
+                        <VBox spacing="5">
+                            <Label text="Daily Progress" styleClass="card-title"/>
+                            <Label text="Today's Reading Goal" styleClass="card-subtitle"/>
+                        </VBox>
+                    </HBox>
+                    <ProgressBar fx:id="dailyProgress" progress="0.0" styleClass="main-progress-bar"/>
+                    <HBox spacing="20" styleClass="stats-row">
+                        <VBox alignment="CENTER" styleClass="stat-item">
+                            <Label fx:id="todayPagesLabel" text="0" styleClass="stat-number"/>
+                            <Label text="Today" styleClass="stat-label"/>
+                        </VBox>
+                        <VBox alignment="CENTER" styleClass="stat-item">
+                            <Label fx:id="dailyGoalLabel" text="10" styleClass="stat-number"/>
+                            <Label text="Goal" styleClass="stat-label"/>
+                        </VBox>
+                        <VBox alignment="CENTER" styleClass="stat-item">
+                            <Label fx:id="streakLabel" text="0" styleClass="stat-number"/>
+                            <Label text="Streak" styleClass="stat-label"/>
+                        </VBox>
+                    </HBox>
+                </VBox>
+            </HBox>
+            
+            <!-- Quick Actions -->
+            <HBox spacing="15" styleClass="quick-actions">
+                <Label text="⚡ Quick Actions" styleClass="section-title"/>
+                <Region HBox.hgrow="ALWAYS"/>
+                <Button text="📝 Update Today's Reading" onAction="#handleUpdatePages" styleClass="secondary-button"/>
+                <Button text="🎯 Set Daily Goal" onAction="#handleSetGoal" styleClass="secondary-button"/>
+                <Button text="📊 View Statistics" onAction="#handleViewStats" styleClass="secondary-button"/>
+            </HBox>
+            
+            <!-- Daily Reading Input Section -->
+            <VBox styleClass="input-section" spacing="20">
+                <Label text="📖 Daily Reading Input" styleClass="section-title"/>
+                <HBox spacing="20" alignment="CENTER_LEFT" styleClass="input-row">
+                    <VBox spacing="8" styleClass="input-group">
+                        <Label text="Pages Read Today" styleClass="input-label"/>
+                        <Spinner fx:id="pagesReadSpinner" prefWidth="120" styleClass="modern-spinner"/>
+                    </VBox>
+                    <VBox spacing="8" styleClass="input-group">
+                        <Label text="Daily Goal" styleClass="input-label"/>
+                        <ComboBox fx:id="dailyGoalCombo" promptText="Select goal" prefWidth="150" styleClass="modern-combo"/>
+                    </VBox>
+                    <VBox spacing="8" styleClass="input-group">
+                        <Label text="Date" styleClass="input-label"/>
+                        <DatePicker fx:id="lastReadDate" styleClass="modern-date-picker"/>
+                    </VBox>
+                    <VBox spacing="8" styleClass="input-group">
+                        <Button text="💾 Save Progress" onAction="#handleSavePagesRead" styleClass="primary-button"/>
+                    </VBox>
+                </HBox>
+            </VBox>
+            
+            <!-- Surah Progress Section -->
+            <VBox spacing="15" styleClass="surah-section">
+                <HBox alignment="CENTER_LEFT" spacing="15">
+                    <Label text="📚 Surah Progress" styleClass="section-title"/>
+                    <Region HBox.hgrow="ALWAYS"/>
+                    <Label text="Click on a surah to mark as completed" styleClass="help-text"/>
+                </HBox>
+                
+                <GridPane fx:id="surahGrid" hgap="15" vgap="15" styleClass="surah-grid">
+                </GridPane>
+            </VBox>
+        </VBox>
+    </ScrollPane>
+    
+    <stylesheets>
+        <URL value="@../styles/quran_tracker.css"/>
+    </stylesheets>
+</VBox> 

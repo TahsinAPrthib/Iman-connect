@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.text.Text?>
+<?import javafx.scene.shape.*?>
+
+<StackPane xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
+         fx:controller="com.faithapp.controllers.SignUpController">
+    
+    <!-- Background with Islamic pattern -->
+    <VBox style="-fx-background-color: #1a1a1a;">
+        <Path style="-fx-fill: #252525; -fx-stroke: #303030; -fx-stroke-width: 2;"
+              translateX="250" translateY="50">
+            <elements>
+                <MoveTo x="0" y="200"/>
+                <LineTo x="0" y="100"/>
+                <QuadCurveTo x="150" y="0" controlX="75" controlY="0"/>
+                <QuadCurveTo x="300" y="100" controlX="225" controlY="0"/>
+                <LineTo x="300" y="200"/>
+                <ClosePath/>
+            </elements>
+        </Path>
+    </VBox>
+    
+    <!-- Pattern Overlay -->
+    <VBox style="-fx-background-color: linear-gradient(to bottom, rgba(26,26,26,0.9), rgba(26,26,26,0.7));"/>
+    
+    <!-- Sign Up Content -->
+    <VBox alignment="CENTER" spacing="20">
+        <padding>
+            <Insets top="20" right="40" bottom="20" left="40"/>
+        </padding>
+
+        <Text text="Create Account" 
+              style="-fx-font-size: 28; 
+                     -fx-font-weight: bold; 
+                     -fx-fill: #00BFA5; 
+                     -fx-effect: dropshadow(gaussian, rgba(0,191,165,0.3), 10, 0, 0, 0);"/>
+        
+        <VBox spacing="15" maxWidth="350" 
+              style="-fx-background-color: rgba(37,37,37,0.95); 
+                     -fx-padding: 25; 
+                     -fx-background-radius: 15;
+                     -fx-border-radius: 15;
+                     -fx-border-color: #00BFA5;
+                     -fx-border-width: 1;
+                     -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.4), 10, 0, 0, 0);">
+            
+            <TextField fx:id="fullNameField" promptText="Full Name" 
+                      style="-fx-background-color: #333333;
+                             -fx-text-fill: white;
+                             -fx-prompt-text-fill: #808080;
+                             -fx-background-radius: 5; 
+                             -fx-font-size: 14;
+                             -fx-padding: 10 15;"/>
+
+            <TextField fx:id="emailField" promptText="Email" 
+                      style="-fx-background-color: #333333;
+                             -fx-text-fill: white;
+                             -fx-prompt-text-fill: #808080;
+                             -fx-background-radius: 5; 
+                             -fx-font-size: 14;
+                             -fx-padding: 10 15;"/>
+                             
+            <TextField fx:id="usernameField" promptText="Username" 
+                      style="-fx-background-color: #333333;
+                             -fx-text-fill: white;
+                             -fx-prompt-text-fill: #808080;
+                             -fx-background-radius: 5; 
+                             -fx-font-size: 14;
+                             -fx-padding: 10 15;"/>
+                             
+            <PasswordField fx:id="passwordField" promptText="Password" 
+                          style="-fx-background-color: #333333;
+                                 -fx-text-fill: white;
+                                 -fx-prompt-text-fill: #808080;
+                                 -fx-background-radius: 5; 
+                                 -fx-font-size: 14;
+                                 -fx-padding: 10 15;"/>
+                                 
+            <PasswordField fx:id="confirmPasswordField" promptText="Confirm Password" 
+                          style="-fx-background-color: #333333;
+                                 -fx-text-fill: white;
+                                 -fx-prompt-text-fill: #808080;
+                                 -fx-background-radius: 5; 
+                                 -fx-font-size: 14;
+                                 -fx-padding: 10 15;"/>
+            
+            <!-- Gender Selection -->
+            <VBox spacing="5">
+                <Text text="Gender" 
+                      style="-fx-font-size: 14; 
+                             -fx-font-weight: bold; 
+                             -fx-fill: #00BFA5;"/>
+                <HBox spacing="15">
+                    <RadioButton fx:id="maleRadioButton" text="Male" selected="true"
+                                style="-fx-text-fill: white; -fx-font-size: 12;"/>
+                    <RadioButton fx:id="femaleRadioButton" text="Female"
+                                style="-fx-text-fill: white; -fx-font-size: 12;"/>
+                </HBox>
+            </VBox>
+            
+            <HBox spacing="10" alignment="CENTER">
+                <Button text="Create Account" onAction="#handleSignUp" 
+                        style="-fx-background-color: #00BFA5; 
+                               -fx-text-fill: white; 
+                               -fx-font-size: 14; 
+                               -fx-padding: 10 30; 
+                               -fx-background-radius: 5;"/>
+                               
+                <Button text="Back to Login" onAction="#handleBackToLogin" 
+                        style="-fx-background-color: transparent;
+                               -fx-border-color: #00BFA5;
+                               -fx-border-width: 1;
+                               -fx-text-fill: #00BFA5; 
+                               -fx-font-size: 14; 
+                               -fx-padding: 10 30; 
+                               -fx-background-radius: 5;
+                               -fx-border-radius: 5;"/>
+            </HBox>
+        </VBox>
+        
+        <Label fx:id="messageLabel" 
+               style="-fx-text-fill: #FF5252;
+                      -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.8), 5, 0, 0, 0);"/>
+    </VBox>
+</StackPane> 

@@ -1,0 +1,39 @@
+/* Dashboard Hover Effects and Additional Styling */
+
+/* Settings Button Hover */
+#settingsButton:hover {
+    -fx-background-color: #E3F2FD;
+    -fx-scale-x: 1.1;
+    -fx-scale-y: 1.1;
+}
+
+/* Refresh Button Hover */
+.button:hover {
+    -fx-background-color: #E3F2FD;
+    -fx-scale-x: 1.1;
+    -fx-scale-y: 1.1;
+}
+
+/* Feature Buttons Hover */
+.button:hover {
+    -fx-background-color: #E3F2FD;
+    -fx-border-color: #1976D2;
+    -fx-effect: dropshadow(gaussian, rgba(33, 150, 243, 0.2), 5, 0, 0, 3);
+}
+
+/* Logout Button Hover */
+#logoutButton:hover {
+    -fx-background-color: #2196F3;
+    -fx-text-fill: white;
+}
+
+/* Progress Bar Styling */
+.progress-bar > .track {
+    -fx-background-color: #e0e0e0;
+    -fx-background-radius: 5;
+}
+
+.progress-bar > .bar {
+    -fx-background-color: #2196F3;
+    -fx-background-radius: 5;
+} 

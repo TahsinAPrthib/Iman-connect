@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.faithapp.controllers.FatwaTrackerController">
+   <top>
+      <VBox styleClass="header-section" spacing="10">
+         <children>
+            <HBox alignment="CENTER_LEFT" spacing="20" styleClass="header-bar">
+               <children>
+                  <Label fx:id="userNameLabel" styleClass="user-name-label" />
+                  <Region HBox.hgrow="ALWAYS" />
+                  <Button fx:id="askQuestionButton" text="Ask New Question" onAction="#handleAskQuestion" styleClass="primary-button" />
+                  <Button fx:id="refreshButton" text="Refresh" onAction="#handleRefresh" styleClass="secondary-button" />
+                  <Button fx:id="backButton" text="Back to Dashboard" onAction="#handleBack" styleClass="secondary-button" />
+               </children>
+            </HBox>
+         </children>
+         <padding>
+            <Insets top="15" right="20" bottom="15" left="20" />
+         </padding>
+      </VBox>
+   </top>
+   
+   <center>
+      <VBox spacing="20" styleClass="main-content">
+         <children>
+            <!-- Ask Question Form (initially hidden) -->
+            <VBox fx:id="askQuestionForm" spacing="15" styleClass="question-form" visible="false" managed="false">
+               <children>
+                  <Label text="Ask a Fatwa Question" styleClass="section-title" />
+                  
+                  <TextField fx:id="questionTitleField" promptText="Question Title *" styleClass="input-field" />
+                  
+                  <Label text="Question Details *" styleClass="field-label" />
+                  <TextArea fx:id="questionTextArea" promptText="Please provide detailed information about your question..." styleClass="textarea-field" prefRowCount="5" />
+                  
+                  <HBox spacing="20" alignment="CENTER_LEFT">
+                     <children>
+                        <VBox spacing="5">
+                           <children>
+                              <Label text="Category *" styleClass="field-label" />
+                              <ComboBox fx:id="categoryComboBox" styleClass="combo-box" />
+                           </children>
+                        </VBox>
+                        <VBox spacing="5">
+                           <children>
+                              <Label text="Priority *" styleClass="field-label" />
+                              <ComboBox fx:id="priorityComboBox" styleClass="combo-box" />
+                           </children>
+                        </VBox>
+                        <VBox spacing="5">
+                           <children>
+                              <Label text="Select Scholar *" styleClass="field-label" />
+                              <ComboBox fx:id="scholarComboBox" styleClass="combo-box" />
+                           </children>
+                        </VBox>
+                     </children>
+                  </HBox>
+                  
+                  <HBox spacing="10" alignment="CENTER_RIGHT">
+                     <children>
+                        <Button fx:id="cancelQuestionButton" text="Cancel" onAction="#handleCancelQuestion" styleClass="secondary-button" />
+                        <Button fx:id="submitQuestionButton" text="Submit Question" onAction="#handleSubmitQuestion" styleClass="primary-button" />
+                     </children>
+                  </HBox>
+               </children>
+               <padding>
+                  <Insets top="20" right="20" bottom="20" left="20" />
+               </padding>
+            </VBox>
+            
+            <!-- Questions Table -->
+            <VBox spacing="10" styleClass="table-section">
+               <children>
+                  <Label text="My Fatwa Questions" styleClass="section-title" />
+                  <TableView fx:id="questionsTable" VBox.vgrow="ALWAYS" styleClass="questions-table">
+                     <columns>
+                        <TableColumn fx:id="questionTitleColumn" text="Question Title" styleClass="table-column" />
+                        <TableColumn fx:id="scholarNameColumn" text="Scholar" styleClass="table-column" />
+                        <TableColumn fx:id="categoryColumn" text="Category" styleClass="table-column" />
+                        <TableColumn fx:id="priorityColumn" text="Priority" styleClass="table-column" />
+                        <TableColumn fx:id="statusColumn" text="Status" styleClass="table-column" />
+                        <TableColumn fx:id="dateColumn" text="Date" styleClass="table-column" />
+                        <TableColumn fx:id="actionColumn" text="Action" styleClass="table-column" />
+                     </columns>
+                  </TableView>
+               </children>
+            </VBox>
+         </children>
+         <padding>
+            <Insets top="20" right="20" bottom="20" left="20" />
+         </padding>
+      </VBox>
+   </center>
+</BorderPane> 

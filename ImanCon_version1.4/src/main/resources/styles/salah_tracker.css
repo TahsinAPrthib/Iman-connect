@@ -1,0 +1,354 @@
+/* Salah Tracker - Modern Design (Matching Quran Tracker) */
+
+.salah-tracker-main {
+    -fx-background-color: linear-gradient(to bottom right, #667eea, #764ba2);
+    -fx-font-family: 'Segoe UI', Arial, sans-serif;
+}
+
+/* Header Section - Fixed at top */
+.header-section {
+    -fx-background-color: rgba(255, 255, 255, 0.95);
+    -fx-background-radius: 0 0 20 20;
+    -fx-padding: 20 30;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 10, 0, 0, 5);
+    -fx-border-color: rgba(255, 255, 255, 0.8);
+    -fx-border-radius: 0 0 20 20;
+    -fx-border-width: 1;
+}
+
+.main-title {
+    -fx-font-size: 32px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #2c3e50;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 2, 0, 0, 1);
+}
+
+.subtitle {
+    -fx-font-size: 16px;
+    -fx-text-fill: #7f8c8d;
+    -fx-font-style: italic;
+}
+
+.date-label {
+    -fx-font-size: 14px;
+    -fx-text-fill: #34495e;
+    -fx-font-weight: bold;
+}
+
+/* Main Scroll Pane */
+.main-scroll-pane {
+    -fx-background-color: transparent;
+    -fx-background: transparent;
+    -fx-padding: 0;
+}
+
+.main-scroll-pane > .viewport {
+    -fx-background-color: transparent;
+}
+
+.main-scroll-pane .scroll-bar:vertical,
+.main-scroll-pane .scroll-bar:horizontal {
+    -fx-background-color: rgba(255, 255, 255, 0.3);
+    -fx-background-radius: 10;
+    -fx-pref-width: 12;
+    -fx-pref-height: 12;
+}
+
+.main-scroll-pane .scroll-bar:vertical .thumb,
+.main-scroll-pane .scroll-bar:horizontal .thumb {
+    -fx-background-color: #3498db;
+    -fx-background-radius: 10;
+    -fx-min-height: 20;
+    -fx-min-width: 20;
+}
+
+.main-scroll-pane .scroll-bar:vertical .thumb:hover,
+.main-scroll-pane .scroll-bar:horizontal .thumb:hover {
+    -fx-background-color: #2980b9;
+}
+
+/* Main Content */
+.main-content {
+    -fx-background-color: transparent;
+}
+
+/* Button Styles */
+.back-button {
+    -fx-background-color: #3498db;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-font-size: 14px;
+    -fx-background-radius: 25;
+    -fx-padding: 12 25;
+    -fx-cursor: hand;
+    -fx-border-color: #2980b9;
+    -fx-border-radius: 25;
+    -fx-border-width: 1;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 5, 0, 0, 2);
+}
+
+.back-button:hover {
+    -fx-background-color: #2980b9;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.3), 8, 0, 0, 3);
+}
+
+.primary-button {
+    -fx-background-color: #27ae60;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-font-size: 14px;
+    -fx-background-radius: 25;
+    -fx-padding: 12 25;
+    -fx-cursor: hand;
+    -fx-border-color: #229954;
+    -fx-border-radius: 25;
+    -fx-border-width: 1;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 5, 0, 0, 2);
+}
+
+.primary-button:hover {
+    -fx-background-color: #229954;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.3), 8, 0, 0, 3);
+}
+
+.secondary-button {
+    -fx-background-color: rgba(255, 255, 255, 0.9);
+    -fx-text-fill: #2c3e50;
+    -fx-font-weight: bold;
+    -fx-font-size: 13px;
+    -fx-background-radius: 20;
+    -fx-padding: 10 20;
+    -fx-cursor: hand;
+    -fx-border-color: #bdc3c7;
+    -fx-border-radius: 20;
+    -fx-border-width: 1;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 3, 0, 0, 1);
+}
+
+.secondary-button:hover {
+    -fx-background-color: white;
+    -fx-border-color: #95a5a6;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 5, 0, 0, 2);
+}
+
+.action-button {
+    -fx-background-color: #3498db;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-font-size: 12px;
+    -fx-background-radius: 15;
+    -fx-padding: 8 15;
+    -fx-cursor: hand;
+    -fx-border-color: #2980b9;
+    -fx-border-radius: 15;
+    -fx-border-width: 1;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 3, 0, 0, 1);
+}
+
+.action-button:hover {
+    -fx-background-color: #2980b9;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.3), 5, 0, 0, 2);
+}
+
+/* Section Titles */
+.section-title {
+    -fx-font-size: 22px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #2c3e50;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 2, 0, 0, 1);
+}
+
+/* Section titles on gradient background (outside cards) */
+.main-content > VBox > .section-title {
+    -fx-text-fill: white;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.3), 3, 0, 0, 1);
+}
+
+/* Progress Overview Card */
+.progress-overview-card {
+    -fx-background-color: rgba(255, 255, 255, 0.95);
+    -fx-background-radius: 20;
+    -fx-padding: 25;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 10, 0, 0, 5);
+    -fx-border-color: rgba(255, 255, 255, 0.8);
+    -fx-border-radius: 20;
+    -fx-border-width: 1;
+}
+
+.progress-overview-card .section-title {
+    -fx-text-fill: #2c3e50;
+}
+
+.progress-stat {
+    -fx-alignment: center;
+    -fx-padding: 10;
+}
+
+.stat-icon {
+    -fx-font-size: 32px;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 2, 0, 0, 1);
+}
+
+.stat-number {
+    -fx-font-size: 24px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #2c3e50;
+}
+
+.stat-label {
+    -fx-font-size: 12px;
+    -fx-text-fill: #7f8c8d;
+    -fx-font-weight: bold;
+}
+
+.main-progress-bar {
+    -fx-pref-height: 12;
+    -fx-background-radius: 6;
+}
+
+.main-progress-bar .bar {
+    -fx-background-color: linear-gradient(to right, #3498db, #2980b9);
+    -fx-background-radius: 6;
+}
+
+.main-progress-bar .track {
+    -fx-background-color: #ecf0f1;
+    -fx-background-radius: 6;
+}
+
+/* Prayer Grid */
+.prayer-grid {
+    -fx-background: transparent;
+}
+
+/* Prayer Cards */
+.prayer-card {
+    -fx-background-color: rgba(255, 255, 255, 0.95);
+    -fx-background-radius: 20;
+    -fx-padding: 20;
+    -fx-spacing: 15;
+    -fx-border-color: #ecf0f1;
+    -fx-border-radius: 20;
+    -fx-border-width: 2;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.05), 5, 0, 0, 2);
+    -fx-min-width: 200;
+    -fx-pref-width: 250;
+    -fx-max-width: 300;
+    -fx-min-height: 180;
+}
+
+.prayer-card:hover {
+    -fx-background-color: #f8f9fa;
+    -fx-border-color: #3498db;
+    -fx-effect: dropshadow(gaussian, rgba(52, 152, 219, 0.2), 8, 0, 0, 3);
+}
+
+.prayer-icon {
+    -fx-font-size: 24px;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 2, 0, 0, 1);
+}
+
+.prayer-name {
+    -fx-font-size: 18px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #2c3e50;
+}
+
+.prayer-time {
+    -fx-font-size: 14px;
+    -fx-text-fill: #7f8c8d;
+    -fx-font-weight: bold;
+}
+
+.status-section {
+    -fx-spacing: 8;
+    -fx-padding: 10 0;
+}
+
+.status-radio {
+    -fx-text-fill: #2c3e50;
+    -fx-font-size: 13px;
+    -fx-font-weight: bold;
+}
+
+.status-radio .radio {
+    -fx-background-color: white;
+    -fx-background-radius: 10;
+    -fx-border-color: #bdc3c7;
+    -fx-border-radius: 10;
+    -fx-border-width: 2;
+}
+
+.status-radio:selected .radio {
+    -fx-background-color: #3498db;
+    -fx-border-color: #2980b9;
+}
+
+.status-radio:selected .dot {
+    -fx-background-color: white;
+    -fx-background-radius: 5;
+}
+
+.status-indicator {
+    -fx-font-size: 12px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #27ae60;
+    -fx-padding: 5 0;
+}
+
+/* Quick Actions Card */
+.quick-actions-card {
+    -fx-background-color: rgba(255, 255, 255, 0.95);
+    -fx-background-radius: 20;
+    -fx-padding: 20;
+    -fx-spacing: 15;
+    -fx-border-color: #ecf0f1;
+    -fx-border-radius: 20;
+    -fx-border-width: 2;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.05), 5, 0, 0, 2);
+    -fx-min-width: 200;
+    -fx-pref-width: 250;
+    -fx-max-width: 300;
+    -fx-min-height: 180;
+}
+
+.quick-actions-card:hover {
+    -fx-background-color: #f8f9fa;
+    -fx-border-color: #3498db;
+    -fx-effect: dropshadow(gaussian, rgba(52, 152, 219, 0.2), 8, 0, 0, 3);
+}
+
+.quick-actions-card .section-title {
+    -fx-text-fill: #2c3e50;
+}
+
+/* Save Section */
+.save-section {
+    -fx-background-color: rgba(255, 255, 255, 0.95);
+    -fx-background-radius: 20;
+    -fx-padding: 25;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 10, 0, 0, 5);
+    -fx-border-color: rgba(255, 255, 255, 0.8);
+    -fx-border-radius: 20;
+    -fx-border-width: 1;
+}
+
+.save-section .section-title {
+    -fx-text-fill: #2c3e50;
+}
+
+/* Prayer Status Colors */
+.prayer-card.completed {
+    -fx-border-color: #27ae60;
+    -fx-background-color: #d5f4e6;
+}
+
+.prayer-card.late {
+    -fx-border-color: #f39c12;
+    -fx-background-color: #fef9e7;
+}
+
+.prayer-card.missed {
+    -fx-border-color: #e74c3c;
+    -fx-background-color: #fdf2f2;
+} 

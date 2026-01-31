@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.geometry.Insets?>
+
+<VBox spacing="20" alignment="TOP_CENTER" xmlns:fx="http://javafx.com/fxml" fx:controller="com.faithapp.controllers.DashboardController">
+    <padding>
+        <Insets top="20" right="20" bottom="20" left="20"/>
+    </padding>
+
+    <!-- Profile Section -->
+    <HBox spacing="20" alignment="CENTER">
+        <VBox alignment="CENTER" spacing="10">
+            <ImageView fx:id="profilePicture" fitHeight="150" fitWidth="150" preserveRatio="true"/>
+            <Button text="Change Picture" onAction="#handleChangeProfilePicture"/>
+        </VBox>
+        <VBox alignment="CENTER_LEFT" spacing="10">
+            <Label fx:id="welcomeLabel" styleClass="welcome-text"/>
+        </VBox>
+    </HBox>
+
+    <!-- Progress Section -->
+    <GridPane hgap="10" vgap="5">
+        <Label text="Prayer Progress:" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+        <ProgressBar fx:id="prayerProgress" progress="0.0" prefWidth="200" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+        
+        <Label text="Scripture Progress:" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+        <ProgressBar fx:id="scriptureProgress" progress="0.0" prefWidth="200" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+        
+        <Label text="Meditation Progress:" GridPane.columnIndex="0" GridPane.rowIndex="2"/>
+        <ProgressBar fx:id="meditationProgress" progress="0.0" prefWidth="200" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+    </GridPane>
+
+    <!-- Goals Section -->
+    <VBox spacing="10">
+        <Label text="Daily Goals" style="-fx-font-size: 16px; -fx-font-weight: bold;"/>
+        <HBox spacing="10">
+            <TextField fx:id="newGoalField" promptText="Enter new goal" HBox.hgrow="ALWAYS"/>
+            <Button text="Add Goal" onAction="#addNewGoal"/>
+        </HBox>
+        <ListView fx:id="goalsList" prefHeight="150"/>
+    </VBox>
+
+    <!-- Main Content Area -->
+    <VBox fx:id="mainContent" spacing="20" VBox.vgrow="ALWAYS">
+        <!-- Islamic Tracker will be loaded here dynamically -->
+    </VBox>
+
+    <!-- Logout Button -->
+    <Button text="Logout" onAction="#handleLogout" styleClass="logout-button"/>
+</VBox> 

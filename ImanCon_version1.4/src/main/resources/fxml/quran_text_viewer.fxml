@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.media.MediaView?>
+<?import javafx.scene.text.TextFlow?>
+<?import java.net.URL?>
+
+<VBox xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" 
+      fx:controller="com.faithapp.controllers.QuranTextViewerController"
+      style="-fx-background-color: #ffffff;"
+      spacing="20">
+    
+    <padding>
+        <Insets top="30" right="30" bottom="30" left="30"/>
+    </padding>
+    
+    <!-- Header -->
+    <HBox alignment="CENTER_LEFT" spacing="20">
+        <Button text="← Back to Dashboard" onAction="#handleBackToDashboard"
+                style="-fx-background-color: #2196F3; -fx-text-fill: white; -fx-font-size: 14; -fx-background-radius: 5; -fx-padding: 8 18;"/>
+        <Label text="Quran Text Viewer" 
+               style="-fx-font-size: 28; -fx-font-weight: bold; -fx-text-fill: #2196F3;"/>
+        <Region HBox.hgrow="ALWAYS"/>
+        <ComboBox fx:id="reciterComboBox" promptText="Select Reciter"/>
+    </HBox>
+    
+    <!-- Audio Controls -->
+    <VBox spacing="10" style="-fx-background-color: #f5f5f5; -fx-padding: 15; -fx-background-radius: 10;">
+        <HBox spacing="10" alignment="CENTER">
+            <Label text="Now Playing:" style="-fx-text-fill: #2196F3;"/>
+            <Label fx:id="currentSurahLabel" text="Select a Surah" style="-fx-text-fill: #222222;"/>
+            <Region HBox.hgrow="ALWAYS"/>
+            <Label fx:id="currentTimeLabel" text="00:00" style="-fx-text-fill: #222222;"/>
+            <Label text="/" style="-fx-text-fill: #222222;"/>
+            <Label fx:id="totalTimeLabel" text="00:00" style="-fx-text-fill: #222222;"/>
+        </HBox>
+        
+        <Slider fx:id="timeSlider" />
+        
+        <HBox spacing="10" alignment="CENTER">
+            <Button fx:id="previousButton" text="⏮" onAction="#handlePrevious"
+                    style="-fx-background-color: transparent; -fx-text-fill: #2196F3; -fx-font-size: 24;"/>
+            <Button fx:id="playPauseButton" text="▶" onAction="#handlePlayPause"
+                    style="-fx-background-color: transparent; -fx-text-fill: #2196F3; -fx-font-size: 24;"/>
+            <Button fx:id="nextButton" text="⏭" onAction="#handleNext"
+                    style="-fx-background-color: transparent; -fx-text-fill: #2196F3; -fx-font-size: 24;"/>
+            <Region HBox.hgrow="ALWAYS"/>
+            <Button fx:id="repeatButton" text="🔁" onAction="#handleRepeat"
+                    style="-fx-background-color: transparent; -fx-text-fill: #2196F3; -fx-font-size: 20;"/>
+            <Slider fx:id="volumeSlider" prefWidth="100" value="100"/>
+        </HBox>
+    </VBox>
+    
+    <!-- Surah Selection and Text Display -->
+    <SplitPane dividerPositions="0.25" VBox.vgrow="ALWAYS">
+        <!-- Surah List -->
+        <VBox spacing="10">
+            <Label text="Surahs" style="-fx-font-size: 18; -fx-font-weight: bold; -fx-text-fill: #2196F3;"/>
+            <ListView fx:id="surahListView" VBox.vgrow="ALWAYS"/>
+        </VBox>
+        
+        <!-- Quran Text Display -->
+        <StackPane>
+            <VBox spacing="10">
+                <HBox spacing="10" alignment="CENTER">
+                    <Label text="Current Surah:" style="-fx-text-fill: #2196F3;"/>
+                    <Label fx:id="surahTitleLabel" style="-fx-text-fill: #222222; -fx-font-size: 18;"/>
+                </HBox>
+                <ScrollPane fitToWidth="true" VBox.vgrow="ALWAYS">
+                    <TextFlow fx:id="quranTextFlow"/>
+                </ScrollPane>
+            </VBox>
+            <ProgressIndicator fx:id="loadingIndicator" 
+                             visible="false"
+                             style="-fx-progress-color: #2196F3;"
+                             maxWidth="100" maxHeight="100"/>
+        </StackPane>
+    </SplitPane>
+    
+    <MediaView fx:id="mediaView" visible="false"/>
+    
+    <stylesheets>
+        <URL value="@../styles/quran_viewer.css"/>
+    </stylesheets>
+</VBox> 

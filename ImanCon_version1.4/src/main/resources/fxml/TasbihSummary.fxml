@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import java.net.URL?>
+
+<VBox xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.faithapp.controllers.TasbihSummaryController"
+      spacing="20" alignment="TOP_CENTER" style="-fx-background-color: #ffffff;" prefWidth="900" prefHeight="700">
+    
+    <!-- Back Button -->
+    <Button text="← Back to Dashboard" onAction="#handleBackToDashboard"
+            style="-fx-background-color: #2196F3; -fx-text-fill: white; -fx-font-size: 14; -fx-background-radius: 5; -fx-padding: 8 18;"/>
+    
+    <Label text="Tasbih Full Summary" style="-fx-font-size: 24; -fx-font-weight: bold; -fx-text-fill: #2196F3;"/>
+    
+    <!-- Filter Section -->
+    <HBox spacing="20" alignment="CENTER">
+        <Label text="Filter by Date:" style="-fx-font-size: 14; -fx-font-weight: bold;"/>
+        <DatePicker fx:id="fromDatePicker" promptText="From Date" style="-fx-font-size: 12;"/>
+        <Label text="to" style="-fx-font-size: 14;"/>
+        <DatePicker fx:id="toDatePicker" promptText="To Date" style="-fx-font-size: 12;"/>
+        <Button text="Filter" onAction="#handleFilter" 
+                style="-fx-background-color: #2196F3; -fx-text-fill: white; -fx-font-size: 12; -fx-background-radius: 5; -fx-padding: 5 15;"/>
+        <Button text="Show All" onAction="#handleShowAll" 
+                style="-fx-background-color: #4CAF50; -fx-text-fill: white; -fx-font-size: 12; -fx-background-radius: 5; -fx-padding: 5 15;"/>
+        <Button text="Export CSV" onAction="#handleExportCSV" 
+                style="-fx-background-color: #FF9800; -fx-text-fill: white; -fx-font-size: 12; -fx-background-radius: 5; -fx-padding: 5 15;"/>
+    </HBox>
+    
+    <!-- Table Section -->
+    <TableView fx:id="summaryTable" VBox.vgrow="ALWAYS">
+        <columns>
+            <TableColumn fx:id="dateColumn" text="Date" prefWidth="100"/>
+            <TableColumn fx:id="dhikrColumn" text="Dhikr" prefWidth="120"/>
+            <TableColumn fx:id="countColumn" text="Count" prefWidth="80"/>
+            <TableColumn fx:id="cyclesColumn" text="Cycles" prefWidth="80"/>
+            <TableColumn fx:id="totalColumn" text="Total" prefWidth="80"/>
+            <TableColumn fx:id="notesColumn" text="Notes" prefWidth="200"/>
+            <TableColumn fx:id="editColumn" text="Edit" prefWidth="80"/>
+        </columns>
+    </TableView>
+    
+    <stylesheets>
+        <URL value="@../styles/tasbih_counter.css"/>
+    </stylesheets>
+</VBox> 

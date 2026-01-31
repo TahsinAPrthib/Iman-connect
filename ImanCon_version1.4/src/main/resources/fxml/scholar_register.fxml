@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.text.Font?>
+
+<VBox alignment="CENTER" spacing="20" styleClass="register-container" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.faithapp.controllers.ScholarRegisterController">
+   <children>
+      <VBox alignment="CENTER" spacing="10" styleClass="header-section">
+         <children>
+            <Label text="Scholar Registration" styleClass="title-label" />
+            <Label text="Join our community of Islamic scholars" styleClass="subtitle-label" />
+         </children>
+      </VBox>
+      
+      <ScrollPane fitToWidth="true" styleClass="form-scroll-pane">
+         <content>
+            <VBox alignment="CENTER" spacing="15" styleClass="form-section">
+               <children>
+                  <TextField fx:id="fullNameField" promptText="Full Name *" styleClass="input-field" />
+                  <TextField fx:id="emailField" promptText="Email Address *" styleClass="input-field" />
+                  <TextField fx:id="usernameField" promptText="Username *" styleClass="input-field" />
+                  <PasswordField fx:id="passwordField" promptText="Password *" styleClass="input-field" />
+                  <PasswordField fx:id="confirmPasswordField" promptText="Confirm Password *" styleClass="input-field" />
+                  
+                  <!-- Gender Selection -->
+                  <VBox spacing="5" styleClass="field-group">
+                     <Label text="Gender *" styleClass="field-label" />
+                     <HBox spacing="15">
+                        <RadioButton fx:id="maleRadioButton" text="Male" selected="true" styleClass="radio-button" />
+                        <RadioButton fx:id="femaleRadioButton" text="Female" styleClass="radio-button" />
+                     </HBox>
+                  </VBox>
+                  
+                  <TextField fx:id="specializationField" promptText="Specialization *" styleClass="input-field" />
+                  
+                  <Label text="Qualifications *" styleClass="field-label" />
+                  <TextArea fx:id="qualificationsArea" promptText="Enter your qualifications, degrees, and certifications..." styleClass="textarea-field" prefRowCount="3" />
+                  
+                  <Label text="Bio" styleClass="field-label" />
+                  <TextArea fx:id="bioArea" promptText="Tell us about yourself and your expertise..." styleClass="textarea-field" prefRowCount="4" />
+                  
+                  <Label fx:id="messageLabel" styleClass="message-label" />
+                  
+                  <Button fx:id="registerButton" text="Register as Scholar" onAction="#handleRegister" styleClass="primary-button" />
+                  <Button fx:id="backToLoginButton" text="Back to Login" onAction="#handleBackToLogin" styleClass="secondary-button" />
+               </children>
+            </VBox>
+         </content>
+      </ScrollPane>
+   </children>
+</VBox> 

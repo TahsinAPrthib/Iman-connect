@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import java.net.URL?>
+
+<VBox xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" 
+      fx:controller="com.faithapp.controllers.ZikrTrackerController"
+      style="-fx-background: linear-gradient(to bottom, #667eea 0%, #764ba2 100%);"
+      spacing="0">
+    
+    <padding>
+        <Insets top="25" right="25" bottom="25" left="25"/>
+    </padding>
+    
+    <!-- Header with Glass Effect -->
+    <VBox style="-fx-background-color: rgba(255, 255, 255, 0.1); -fx-background-radius: 15; -fx-padding: 20; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 10, 0, 0, 5);" spacing="15">
+        <HBox alignment="CENTER_LEFT" spacing="20">
+            <Button text="← Back to Dashboard" onAction="#handleBackToDashboard"
+                    style="-fx-background-color: rgba(255, 255, 255, 0.2); -fx-text-fill: white; -fx-font-size: 14; -fx-background-radius: 20; -fx-padding: 10 20; -fx-border-color: rgba(255, 255, 255, 0.3); -fx-border-width: 1; -fx-border-radius: 20;"/>
+            <Label text="🕌 Zikr Tracker" 
+                   style="-fx-font-size: 28; -fx-font-weight: bold; -fx-text-fill: white; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.3), 3, 0, 0, 1);"/>
+            <Region HBox.hgrow="ALWAYS"/>
+            <VBox alignment="CENTER_RIGHT" spacing="5">
+                <Label fx:id="timeLabel" text="Current Time" 
+                       style="-fx-font-size: 16; -fx-text-fill: white; -fx-font-weight: 600;"/>
+            </VBox>
+        </HBox>
+    </VBox>
+
+    <!-- Scrollable Main Content -->
+    <ScrollPane fitToWidth="true" VBox.vgrow="ALWAYS" style="-fx-background-color: transparent; -fx-border-color: transparent;">
+        <VBox spacing="20" alignment="TOP_CENTER" style="-fx-padding: 20 0 0 0;">
+            
+            <!-- Morning Zikr Card -->
+            <VBox style="-fx-background-color: rgba(255, 255, 255, 0.95); -fx-background-radius: 20; -fx-padding: 25; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 10, 0, 0, 5);" spacing="20" maxWidth="900">
+                <HBox alignment="CENTER_LEFT" spacing="15">
+                    <Label text="🌅 Morning Zikr (أذكار الصباح)" 
+                           style="-fx-font-size: 20; -fx-text-fill: #4A5568; -fx-font-weight: bold;"/>
+                    <Region HBox.hgrow="ALWAYS"/>
+                    <CheckBox fx:id="morningCompletedCheck" text="✅ Completed Today"
+                              style="-fx-font-size: 16; -fx-text-fill: #4A5568; -fx-font-weight: 600;"/>
+                </HBox>
+                
+                <HBox spacing="20" alignment="CENTER_LEFT" style="-fx-background-color: #F7FAFC; -fx-background-radius: 15; -fx-padding: 15;">
+                    <Label text="⏰ Recommended Time:" style="-fx-font-size: 14; -fx-text-fill: #667eea; -fx-font-weight: bold;"/>
+                    <Label text="After Fajr prayer until sunrise" style="-fx-font-size: 14; -fx-text-fill: #4A5568;"/>
+                </HBox>
+                
+                <ScrollPane fitToWidth="true" prefHeight="300" style="-fx-background-color: transparent; -fx-border-color: transparent;">
+                    <VBox fx:id="morningZikrContainer" spacing="15" style="-fx-padding: 10;">
+                        <!-- Zikr items will be added here dynamically -->
+                    </VBox>
+                </ScrollPane>
+                
+                <VBox spacing="10" alignment="CENTER">
+                    <ProgressBar fx:id="morningProgress" progress="0.0" 
+                                style="-fx-accent: linear-gradient(to right, #48BB78, #38A169); -fx-pref-height: 12; -fx-background-radius: 6;"
+                                prefWidth="700"/>
+                    <Label fx:id="morningProgressLabel" text="Progress: 0/33" 
+                           style="-fx-font-size: 16; -fx-text-fill: #4A5568; -fx-font-weight: 600;"/>
+                </VBox>
+            </VBox>
+
+            <!-- Evening Zikr Card -->
+            <VBox style="-fx-background-color: rgba(255, 255, 255, 0.95); -fx-background-radius: 20; -fx-padding: 25; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 10, 0, 0, 5);" spacing="20" maxWidth="900">
+                <HBox alignment="CENTER_LEFT" spacing="15">
+                    <Label text="🌆 Evening Zikr (أذكار المساء)" 
+                           style="-fx-font-size: 20; -fx-text-fill: #4A5568; -fx-font-weight: bold;"/>
+                    <Region HBox.hgrow="ALWAYS"/>
+                    <CheckBox fx:id="eveningCompletedCheck" text="✅ Completed Today"
+                              style="-fx-font-size: 16; -fx-text-fill: #4A5568; -fx-font-weight: 600;"/>
+                </HBox>
+                
+                <HBox spacing="20" alignment="CENTER_LEFT" style="-fx-background-color: #F7FAFC; -fx-background-radius: 15; -fx-padding: 15;">
+                    <Label text="⏰ Recommended Time:" style="-fx-font-size: 14; -fx-text-fill: #667eea; -fx-font-weight: bold;"/>
+                    <Label text="After Asr prayer until Maghrib" style="-fx-font-size: 14; -fx-text-fill: #4A5568;"/>
+                </HBox>
+                
+                <ScrollPane fitToWidth="true" prefHeight="300" style="-fx-background-color: transparent; -fx-border-color: transparent;">
+                    <VBox fx:id="eveningZikrContainer" spacing="15" style="-fx-padding: 10;">
+                        <!-- Zikr items will be added here dynamically -->
+                    </VBox>
+                </ScrollPane>
+                
+                <VBox spacing="10" alignment="CENTER">
+                    <ProgressBar fx:id="eveningProgress" progress="0.0" 
+                                style="-fx-accent: linear-gradient(to right, #667eea, #764ba2); -fx-pref-height: 12; -fx-background-radius: 6;"
+                                prefWidth="700"/>
+                    <Label fx:id="eveningProgressLabel" text="Progress: 0/33" 
+                           style="-fx-font-size: 16; -fx-text-fill: #4A5568; -fx-font-weight: 600;"/>
+                </VBox>
+            </VBox>
+
+            <!-- Reminder Settings Card -->
+            <VBox style="-fx-background-color: rgba(255, 255, 255, 0.95); -fx-background-radius: 20; -fx-padding: 25; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 10, 0, 0, 5);" spacing="20" maxWidth="900">
+                <Label text="🔔 Reminder Settings" 
+                       style="-fx-font-size: 20; -fx-text-fill: #4A5568; -fx-font-weight: bold; -fx-text-alignment: center;"/>
+                
+                <GridPane hgap="20" vgap="15" alignment="CENTER">
+                    <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="150"/>
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="250"/>
+                    </columnConstraints>
+                    
+                    <Label text="🌅 Morning Reminder:" 
+                           style="-fx-font-size: 16; -fx-text-fill: #4A5568; -fx-font-weight: 600;" 
+                           GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+                    <HBox spacing="15" alignment="CENTER_LEFT" GridPane.columnIndex="1" GridPane.rowIndex="0">
+                        <ComboBox fx:id="morningReminderTime" prefWidth="150"
+                                  style="-fx-font-size: 14; -fx-background-radius: 10; -fx-border-radius: 10; -fx-padding: 8;"/>
+                        <CheckBox fx:id="morningReminderEnabled" text="Enable" selected="true"
+                                  style="-fx-font-size: 14; -fx-text-fill: #4A5568; -fx-font-weight: 600;"/>
+                    </HBox>
+                    
+                    <Label text="🌆 Evening Reminder:" 
+                           style="-fx-font-size: 16; -fx-text-fill: #4A5568; -fx-font-weight: 600;" 
+                           GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+                    <HBox spacing="15" alignment="CENTER_LEFT" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                        <ComboBox fx:id="eveningReminderTime" prefWidth="150"
+                                  style="-fx-font-size: 14; -fx-background-radius: 10; -fx-border-radius: 10; -fx-padding: 8;"/>
+                        <CheckBox fx:id="eveningReminderEnabled" text="Enable" selected="true"
+                                  style="-fx-font-size: 14; -fx-text-fill: #4A5568; -fx-font-weight: 600;"/>
+                    </HBox>
+                </GridPane>
+                
+                <HBox spacing="20" alignment="CENTER">
+                    <Button text="💾 Save Reminder Settings" 
+                            onAction="#handleSaveReminders"
+                            style="-fx-background: linear-gradient(to right, #667eea, #764ba2); -fx-text-fill: white; -fx-font-size: 14; -fx-font-weight: bold; -fx-background-radius: 15; -fx-padding: 12 25; -fx-effect: dropshadow(gaussian, rgba(102, 126, 234, 0.4), 8, 0, 0, 3);"/>
+                </HBox>
+            </VBox>
+
+            <!-- Action Buttons -->
+            <HBox spacing="20" alignment="CENTER" maxWidth="900">
+                <Button text="📊 View Full Summary" onAction="#handleViewSummary"
+                        style="-fx-background: linear-gradient(to right, #FF9800, #F57C00); -fx-text-fill: white; -fx-font-size: 16; -fx-font-weight: bold; -fx-background-radius: 20; -fx-padding: 15 30; -fx-effect: dropshadow(gaussian, rgba(255, 152, 0, 0.4), 10, 0, 0, 5);"/>
+            </HBox>
+        </VBox>
+    </ScrollPane>
+    
+    <stylesheets>
+        <URL value="@../styles/zikr_tracker.css"/>
+    </stylesheets>
+</VBox> 

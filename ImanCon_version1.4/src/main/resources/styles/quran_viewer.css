@@ -1,0 +1,128 @@
+.root {
+    -fx-background-color: #ffffff;
+}
+
+.label {
+    -fx-text-fill: #222222;
+}
+
+.split-pane {
+    -fx-background-color: transparent;
+}
+
+.split-pane > .split-pane-divider {
+    -fx-background-color: #e0e0e0;
+}
+
+.scroll-pane {
+    -fx-background: #f5f5f5;
+    -fx-background-color: transparent;
+}
+
+.scroll-pane > .viewport {
+    -fx-background-color: transparent;
+}
+
+.scroll-bar:vertical,
+.scroll-bar:horizontal {
+    -fx-background-color: transparent;
+}
+
+.scroll-bar:vertical .thumb,
+.scroll-bar:horizontal .thumb {
+    -fx-background-color: #2196F3;
+}
+
+.list-view {
+    -fx-background-color: #f5f5f5;
+    -fx-control-inner-background: #f5f5f5;
+}
+
+.list-cell {
+    -fx-background-color: #f5f5f5;
+    -fx-text-fill: #222222;
+    -fx-padding: 8;
+}
+
+.list-cell:selected {
+    -fx-background-color: #2196F3;
+}
+
+.text-flow {
+    -fx-background-color: #f5f5f5;
+    -fx-padding: 15;
+}
+
+.text-flow Text {
+    -fx-fill: #222222;
+    -fx-font-size: 20;
+}
+
+.arabic-text {
+    -fx-font-family: "Amiri", "Noto Naskh Arabic", "Arial Unicode MS", "Traditional Arabic", "Scheherazade", "Arial";
+    -fx-font-size: 28;
+    -fx-fill: #222222;
+    -fx-text-alignment: right;
+    -fx-font-weight: normal;
+    -fx-line-spacing: 1.5;
+}
+
+.translation-text {
+    -fx-font-family: "Segoe UI", "Arial", sans-serif;
+    -fx-font-size: 16;
+    -fx-fill: #888888;
+    -fx-line-spacing: 1.2;
+}
+
+.slider {
+    -fx-control-inner-background: #e0e0e0;
+    -fx-accent: #2196F3;
+}
+
+.slider .thumb {
+    -fx-background-color: #2196F3;
+}
+
+.slider .track {
+    -fx-background-color: #e0e0e0;
+}
+
+.combo-box {
+    -fx-background-color: #f5f5f5;
+    -fx-text-fill: #222222;
+    -fx-mark-color: #2196F3;
+}
+
+.combo-box .list-cell {
+    -fx-text-fill: #222222;
+}
+
+.combo-box-popup .list-view {
+    -fx-background-color: #f5f5f5;
+}
+
+.combo-box-popup .list-cell:hover {
+    -fx-background-color: #e0e0e0;
+}
+
+.button {
+    -fx-background-color: #2196F3;
+    -fx-text-fill: white;
+    -fx-cursor: hand;
+}
+
+.button:hover {
+    -fx-background-color: #1976D2;
+}
+
+.media-controls {
+    -fx-spacing: 10;
+    -fx-padding: 10;
+    -fx-background-color: #f5f5f5;
+    -fx-background-radius: 5;
+}
+
+.time-label {
+    -fx-font-family: monospace;
+    -fx-text-fill: #222222;
+} 

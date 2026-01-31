@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.image.*?>
+
+<ScrollPane xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" 
+            fx:controller="com.faithapp.controllers.DashboardController"
+            style="-fx-background-color: #ffffff; -fx-background: transparent;"
+            fitToWidth="true"
+            hbarPolicy="NEVER"
+            vbarPolicy="AS_NEEDED">
+    
+    <VBox style="-fx-background-color: #ffffff;" spacing="20" minHeight="800">
+        <padding>
+            <Insets top="30" right="30" bottom="30" left="30"/>
+        </padding>
+        
+        <!-- Profile Section -->
+        <VBox alignment="CENTER" spacing="15" 
+              style="-fx-background-color: #f5f5f5; -fx-padding: 20; -fx-background-radius: 10; -fx-border-color: #e0e0e0; -fx-border-width: 2; -fx-border-radius: 10;">
+            
+            <!-- Profile Picture, User Info, and Date/Time Row -->
+            <HBox alignment="CENTER_LEFT" spacing="20">
+                <!-- Profile Picture -->
+                <StackPane>
+                    <Circle fx:id="profilePhotoCircle" radius="60" 
+                            style="-fx-fill: #2196F3; -fx-stroke: #ffffff; -fx-stroke-width: 3;"/>
+                    <ImageView fx:id="profilePhotoView" fitWidth="120" fitHeight="120" preserveRatio="true">
+                        <clip>
+                            <Circle radius="60" centerX="60" centerY="60"/>
+                        </clip>
+                    </ImageView>
+                    <Button fx:id="changePhotoButton" text="📷 Change Photo" 
+                            onAction="#handleChangePhoto"
+                            style="-fx-background-color: rgba(33, 150, 243, 0.9); -fx-text-fill: white; -fx-font-size: 11; -fx-font-weight: bold; -fx-background-radius: 15; -fx-padding: 8 12; -fx-cursor: hand; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.3), 5, 0, 0, 2);"
+                            visible="false"
+                            StackPane.alignment="BOTTOM_CENTER"/>
+                </StackPane>
+                
+                <!-- User Name and Settings -->
+                <VBox alignment="CENTER_LEFT" spacing="10">
+                    <Label fx:id="userNameLabel" text="User Name" 
+                           style="-fx-font-size: 28; -fx-font-weight: bold; -fx-text-fill: #222222;"/>
+                    <Button fx:id="settingsButton" text="⚙ Settings" onAction="#handleSettings"
+                            style="-fx-background-color: transparent; -fx-text-fill: #2196F3; -fx-font-size: 16; -fx-padding: 8; -fx-cursor: hand; -fx-background-radius: 20; -fx-min-width: 120; -fx-min-height: 40; -fx-border-color: #2196F3; -fx-border-width: 2; -fx-border-radius: 20;"/>
+                </VBox>
+                
+                <!-- Spacer to push Arabic text to the middle -->
+                <Region HBox.hgrow="ALWAYS"/>
+                
+                <!-- Arabic Text Section -->
+                <VBox alignment="CENTER" spacing="5">
+                    <Label text="بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ" 
+                           style="-fx-font-size: 28; -fx-font-weight: bold; -fx-text-fill: #2196F3; -fx-text-alignment: center;"/>
+                    <Label text="In the name of Allah, the Most Gracious, the Most Merciful" 
+                           style="-fx-font-size: 14; -fx-text-fill: #666666; -fx-text-alignment: center; -fx-font-style: italic;"/>
+                </VBox>
+                
+                <!-- Spacer to push date/time to the right -->
+                <Region HBox.hgrow="ALWAYS"/>
+                
+                <!-- Date and Time Section -->
+                <VBox alignment="CENTER_RIGHT" spacing="5">
+                    <Label fx:id="currentDateLabel" text="Loading..." 
+                           style="-fx-font-size: 16; -fx-text-fill: #222222; -fx-font-weight: 600;"/>
+                    <Label fx:id="currentTimeLabel" text="Loading..." 
+                           style="-fx-font-size: 24; -fx-font-weight: bold; -fx-text-fill: #2196F3;"/>
+                </VBox>
+            </HBox>
+        </VBox>
+        
+        <!-- Stats Section -->
+        <GridPane hgap="20" vgap="20" alignment="CENTER">
+            <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="280" prefWidth="320"/>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="280" prefWidth="320"/>
+            </columnConstraints>
+            <rowConstraints>
+                <RowConstraints vgrow="SOMETIMES" minHeight="120" prefHeight="140"/>
+            </rowConstraints>
+            
+            <!-- Prayer Stats Card -->
+            <VBox GridPane.columnIndex="0" GridPane.rowIndex="0"
+                  style="-fx-background-color: #f5f5f5; -fx-padding: 15; -fx-background-radius: 10; -fx-border-color: #2196F3; -fx-border-width: 2; -fx-border-radius: 10;">
+                <HBox alignment="CENTER_LEFT" spacing="10">
+                    <Label text="🕌" style="-fx-font-size: 18; -fx-text-fill: #2196F3;"/>
+                    <Label text="Prayer Stats" style="-fx-font-size: 16; -fx-font-weight: bold; -fx-text-fill: #2196F3;"/>
+                    <Region HBox.hgrow="ALWAYS"/>
+                    <Button text="↻" onAction="#handleRefreshPrayerStats"
+                            style="-fx-background-color: transparent; -fx-text-fill: #2196F3; -fx-font-size: 14; -fx-cursor: hand; -fx-padding: 5; -fx-background-radius: 50; -fx-min-width: 30; -fx-min-height: 30;"/>
+                </HBox>
+                <VBox spacing="8" style="-fx-padding: 10 0 0 0;">
+                    <Label fx:id="prayerStatsLabel" text="Daily Prayers: 0/5" 
+                           style="-fx-font-size: 14; -fx-text-fill: #222222; -fx-font-weight: 600;"/>
+                    <Label fx:id="prayerDetailsLabel" text="On Time: 0 | Late: 0 | Missed: 0" 
+                           style="-fx-font-size: 12; -fx-text-fill: #666666;"/>
+                    <ProgressBar fx:id="prayerProgress" progress="0.0" 
+                                style="-fx-accent: #2196F3; -fx-pref-height: 8;"/>
+                </VBox>
+            </VBox>
+            
+            <!-- Quran Stats Card -->
+            <VBox GridPane.columnIndex="1" GridPane.rowIndex="0"
+                  style="-fx-background-color: #f5f5f5; -fx-padding: 15; -fx-background-radius: 10; -fx-border-color: #2196F3; -fx-border-width: 2; -fx-border-radius: 10;">
+                <HBox alignment="CENTER_LEFT" spacing="10">
+                    <Label text="📖" style="-fx-font-size: 18; -fx-text-fill: #2196F3;"/>
+                    <Label text="Quran Reading" style="-fx-font-size: 16; -fx-font-weight: bold; -fx-text-fill: #2196F3;"/>
+                    <Region HBox.hgrow="ALWAYS"/>
+                    <Button text="↻" onAction="#handleRefreshQuranStats"
+                            style="-fx-background-color: transparent; -fx-text-fill: #2196F3; -fx-font-size: 14; -fx-cursor: hand; -fx-padding: 5; -fx-background-radius: 50; -fx-min-width: 30; -fx-min-height: 30;"/>
+                </HBox>
+                <VBox spacing="8" style="-fx-padding: 10 0 0 0;">
+                    <Label fx:id="quranStatsLabel" text="Pages Read Today: 0/10" 
+                           style="-fx-font-size: 14; -fx-text-fill: #222222; -fx-font-weight: 600;"/>
+                    <ProgressBar fx:id="quranProgress" progress="0.0" 
+                                style="-fx-accent: #2196F3; -fx-pref-height: 8;"/>
+                </VBox>
+            </VBox>
+        </GridPane>
+        
+        <!-- Features Grid -->
+        <GridPane hgap="20" vgap="20" alignment="CENTER">
+            <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="200" prefWidth="250"/>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="200" prefWidth="250"/>
+            </columnConstraints>
+            <rowConstraints>
+                <RowConstraints vgrow="SOMETIMES" minHeight="120" prefHeight="140"/>
+                <RowConstraints vgrow="SOMETIMES" minHeight="120" prefHeight="140"/>
+                <RowConstraints vgrow="SOMETIMES" minHeight="120" prefHeight="140"/>
+                <RowConstraints vgrow="SOMETIMES" minHeight="120" prefHeight="140"/>
+            </rowConstraints>
+            
+            <Button fx:id="salahTrackerButton" text="🕌 Salah Tracker" onAction="#handleSalahTracker"
+                    GridPane.columnIndex="0" GridPane.rowIndex="0"
+                    style="-fx-background-color: linear-gradient(to bottom right, #E3F2FD, #BBDEFB); -fx-text-fill: #1565C0; -fx-font-size: 14; -fx-font-weight: 600; -fx-min-width: 200; -fx-min-height: 120; -fx-background-radius: 15; -fx-border-color: #2196F3; -fx-border-width: 2; -fx-border-radius: 15; -fx-cursor: hand; -fx-padding: 15; -fx-effect: dropshadow(gaussian, rgba(33,150,243,0.2), 8, 0, 0, 2);"
+                    maxWidth="Infinity" maxHeight="Infinity"/>
+                    
+            <Button fx:id="quranTrackerButton" text="📖 Quran Tracker" onAction="#handleQuranTracker"
+                    GridPane.columnIndex="1" GridPane.rowIndex="0"
+                    style="-fx-background-color: linear-gradient(to bottom right, #F3E5F5, #E1BEE7); -fx-text-fill: #7B1FA2; -fx-font-size: 14; -fx-font-weight: 600; -fx-min-width: 200; -fx-min-height: 120; -fx-background-radius: 15; -fx-border-color: #9C27B0; -fx-border-width: 2; -fx-border-radius: 15; -fx-cursor: hand; -fx-padding: 15; -fx-effect: dropshadow(gaussian, rgba(156,39,176,0.2), 8, 0, 0, 2);"
+                    maxWidth="Infinity" maxHeight="Infinity"/>
+                    
+            <Button fx:id="tasbihCounterButton" text="📿 Tasbih Counter" onAction="#handleTasbihCounter"
+                    GridPane.columnIndex="0" GridPane.rowIndex="1"
+                    style="-fx-background-color: linear-gradient(to bottom right, #E8F5E8, #C8E6C9); -fx-text-fill: #2E7D32; -fx-font-size: 14; -fx-font-weight: 600; -fx-min-width: 200; -fx-min-height: 120; -fx-background-radius: 15; -fx-border-color: #4CAF50; -fx-border-width: 2; -fx-border-radius: 15; -fx-cursor: hand; -fx-padding: 15; -fx-effect: dropshadow(gaussian, rgba(76,175,80,0.2), 8, 0, 0, 2);"
+                    maxWidth="Infinity" maxHeight="Infinity"/>
+                    
+            <Button fx:id="zikrTrackerButton" text="✨ Zikr Tracker" onAction="#handleZikrTracker"
+                    GridPane.columnIndex="1" GridPane.rowIndex="1"
+                    style="-fx-background-color: linear-gradient(to bottom right, #FFF3E0, #FFE0B2); -fx-text-fill: #E65100; -fx-font-size: 14; -fx-font-weight: 600; -fx-min-width: 200; -fx-min-height: 120; -fx-background-radius: 15; -fx-border-color: #FF9800; -fx-border-width: 2; -fx-border-radius: 15; -fx-cursor: hand; -fx-padding: 15; -fx-effect: dropshadow(gaussian, rgba(255,152,0,0.2), 8, 0, 0, 2);"
+                    maxWidth="Infinity" maxHeight="Infinity"/>
+
+            <Button fx:id="ramadanTrackerButton" text="🌙 Ramadan Tracker" onAction="#handleRamadanTracker"
+                    GridPane.columnIndex="0" GridPane.rowIndex="2"
+                    style="-fx-background-color: linear-gradient(to bottom right, #E1F5FE, #B3E5FC); -fx-text-fill: #0277BD; -fx-font-size: 14; -fx-font-weight: 600; -fx-min-width: 200; -fx-min-height: 120; -fx-background-radius: 15; -fx-border-color: #00BCD4; -fx-border-width: 2; -fx-border-radius: 15; -fx-cursor: hand; -fx-padding: 15; -fx-effect: dropshadow(gaussian, rgba(0,188,212,0.2), 8, 0, 0, 2);"
+                    maxWidth="Infinity" maxHeight="Infinity"/>
+                    
+            <Button fx:id="fastTrackerButton" text="🌅 Fast Tracker" onAction="#handleFastTracker"
+                    GridPane.columnIndex="1" GridPane.rowIndex="2"
+                    style="-fx-background-color: linear-gradient(to bottom right, #FCE4EC, #F8BBD9); -fx-text-fill: #C2185B; -fx-font-size: 14; -fx-font-weight: 600; -fx-min-width: 200; -fx-min-height: 120; -fx-background-radius: 15; -fx-border-color: #E91E63; -fx-border-width: 2; -fx-border-radius: 15; -fx-cursor: hand; -fx-padding: 15; -fx-effect: dropshadow(gaussian, rgba(233,30,99,0.2), 8, 0, 0, 2);"
+                    maxWidth="Infinity" maxHeight="Infinity"/>
+                    
+            <Button fx:id="fatwaTrackerButton" text="📋 Fatwa Tracker" onAction="#handleFatwaTracker"
+                    GridPane.columnIndex="0" GridPane.rowIndex="3"
+                    style="-fx-background-color: linear-gradient(to bottom right, #E8F5E8, #C8E6C9); -fx-text-fill: #2E7D32; -fx-font-size: 14; -fx-font-weight: 600; -fx-min-width: 200; -fx-min-height: 120; -fx-background-radius: 15; -fx-border-color: #4CAF50; -fx-border-width: 2; -fx-border-radius: 15; -fx-cursor: hand; -fx-padding: 15; -fx-effect: dropshadow(gaussian, rgba(76,175,80,0.2), 8, 0, 0, 2);"
+                    maxWidth="Infinity" maxHeight="Infinity"/>
+                    
+            <Button fx:id="communityTrackerButton" text="👥 Community Tracker" onAction="#handleCommunityTracker"
+                    GridPane.columnIndex="1" GridPane.rowIndex="3"
+                    style="-fx-background-color: linear-gradient(to bottom right, #E1F5FE, #B3E5FC); -fx-text-fill: #0277BD; -fx-font-size: 14; -fx-font-weight: 600; -fx-min-width: 200; -fx-min-height: 120; -fx-background-radius: 15; -fx-border-color: #00BCD4; -fx-border-width: 2; -fx-border-radius: 15; -fx-cursor: hand; -fx-padding: 15; -fx-effect: dropshadow(gaussian, rgba(0,188,212,0.2), 8, 0, 0, 2);"
+                    maxWidth="Infinity" maxHeight="Infinity"/>
+        </GridPane>
+        
+        <!-- Logout Button -->
+        <Button fx:id="logoutButton" text="Logout" onAction="#handleLogout"
+                style="-fx-background-color: transparent; -fx-text-fill: #2196F3; -fx-font-size: 14; -fx-font-weight: 600; -fx-border-color: #2196F3; -fx-border-width: 2; -fx-min-width: 120; -fx-min-height: 40; -fx-background-radius: 20; -fx-border-radius: 20; -fx-cursor: hand; -fx-padding: 8 20;"/>
+        
+        <!-- Additional spacing for better scrolling -->
+        <VBox spacing="10" alignment="CENTER" style="-fx-padding: 20;">
+            <Label text="Islamic Faith Tracker" 
+                   style="-fx-font-size: 16; -fx-text-fill: #666666; -fx-font-weight: 600;"/>
+            <Label text="Track your daily Islamic practices and spiritual growth" 
+                   style="-fx-font-size: 12; -fx-text-fill: #999999;"/>
+        </VBox>
+    </VBox>
+</ScrollPane> 

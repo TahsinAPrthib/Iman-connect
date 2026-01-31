@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.text.Text?>
+<?import javafx.scene.shape.*?>
+
+<StackPane xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" 
+         fx:controller="com.faithapp.controllers.RegisterController">
+    
+    <!-- Beautiful Mosque-inspired Background -->
+    <Rectangle width="1920" height="1080" 
+               style="-fx-fill: linear-gradient(to bottom, #1e3c72, #2a5298, #667eea, #764ba2);"/>
+    
+    <!-- Mosque dome effect using radial gradients -->
+    <Rectangle width="1920" height="1080" 
+               style="-fx-fill: radial-gradient(center 50% 30%, radius 40%, rgba(255,215,0,0.2) 0%, rgba(255,215,0,0.1) 30%, transparent 60%);"/>
+    
+    <!-- Star pattern overlay for spiritual atmosphere -->
+    <Rectangle width="1920" height="1080" 
+               style="-fx-fill: radial-gradient(center 20% 20%, radius 2%, rgba(255,255,255,0.8) 0%, transparent 100%),
+                      radial-gradient(center 80% 15%, radius 1.5%, rgba(255,255,255,0.6) 0%, transparent 100%),
+                      radial-gradient(center 40% 80%, radius 1%, rgba(255,255,255,0.7) 0%, transparent 100%),
+                      radial-gradient(center 90% 70%, radius 1.5%, rgba(255,255,255,0.5) 0%, transparent 100%),
+                      radial-gradient(center 10% 60%, radius 1%, rgba(255,255,255,0.6) 0%, transparent 100%);"/>
+    
+    <!-- Additional decorative overlay -->
+    <Rectangle width="1920" height="1080" 
+               style="-fx-fill: linear-gradient(to bottom, rgba(0,0,0,0.1), rgba(0,0,0,0.3));"/>
+    
+    <!-- Registration Content -->
+    <VBox alignment="CENTER" spacing="20">
+        <padding>
+            <Insets top="20" right="40" bottom="20" left="40"/>
+        </padding>
+
+        <Text text="Create Account" 
+              style="-fx-font-size: 48; 
+                     -fx-font-weight: bold; 
+                     -fx-fill: #ffffff; 
+                     -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.5), 10, 0, 0, 0);"/>
+        
+        <VBox spacing="15" maxWidth="400" 
+              style="-fx-background-color: rgba(255,255,255,0.95); 
+                     -fx-padding: 30; 
+                     -fx-background-radius: 20;
+                     -fx-border-radius: 20;
+                     -fx-border-color: #2196F3;
+                     -fx-border-width: 2;
+                     -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.3), 15, 0, 0, 0);">
+            
+            <!-- Account Type Selection -->
+            <Text text="Select Account Type" 
+                  style="-fx-font-size: 18; 
+                         -fx-font-weight: bold; 
+                         -fx-fill: #2196F3;"/>
+            
+            <VBox spacing="10" style="-fx-padding: 10 0;">
+                <RadioButton fx:id="userRadioButton" text="Regular User" selected="true"
+                            style="-fx-text-fill: #222222; -fx-font-size: 14; -fx-font-weight: bold;"/>
+                <RadioButton fx:id="scholarRadioButton" text="Scholar"
+                            style="-fx-text-fill: #222222; -fx-font-size: 14; -fx-font-weight: bold;"/>
+            </VBox>
+            
+            <Separator style="-fx-background-color: #cccccc; -fx-padding: 5 0;"/>
+            
+            <!-- Gender Selection -->
+            <Text text="Gender" 
+                  style="-fx-font-size: 18; 
+                         -fx-font-weight: bold; 
+                         -fx-fill: #2196F3;"/>
+            
+            <VBox spacing="10" style="-fx-padding: 10 0;">
+                <RadioButton fx:id="maleRadioButton" text="Male" selected="true"
+                            style="-fx-text-fill: #222222; -fx-font-size: 14; -fx-font-weight: bold;"/>
+                <RadioButton fx:id="femaleRadioButton" text="Female"
+                            style="-fx-text-fill: #222222; -fx-font-size: 14; -fx-font-weight: bold;"/>
+            </VBox>
+            
+            <Separator style="-fx-background-color: #cccccc; -fx-padding: 5 0;"/>
+            
+            <!-- Common Fields -->
+            <TextField fx:id="fullNameField" promptText="Full Name" 
+                      style="-fx-background-color: #ffffff;
+                             -fx-text-fill: #222222;
+                             -fx-prompt-text-fill: #888888;
+                             -fx-background-radius: 8; 
+                             -fx-font-size: 14;
+                             -fx-padding: 12 18;
+                             -fx-border-color: #e0e0e0;
+                             -fx-border-width: 1;
+                             -fx-border-radius: 8;"/>
+                             
+            <TextField fx:id="emailField" promptText="Email" 
+                      style="-fx-background-color: #ffffff;
+                             -fx-text-fill: #222222;
+                             -fx-prompt-text-fill: #888888;
+                             -fx-background-radius: 8; 
+                             -fx-font-size: 14;
+                             -fx-padding: 12 18;
+                             -fx-border-color: #e0e0e0;
+                             -fx-border-width: 1;
+                             -fx-border-radius: 8;"/>
+                             
+            <TextField fx:id="usernameField" promptText="Username" 
+                      style="-fx-background-color: #ffffff;
+                             -fx-text-fill: #222222;
+                             -fx-prompt-text-fill: #888888;
+                             -fx-background-radius: 8; 
+                             -fx-font-size: 14;
+                             -fx-padding: 12 18;
+                             -fx-border-color: #e0e0e0;
+                             -fx-border-width: 1;
+                             -fx-border-radius: 8;"/>
+                             
+            <PasswordField fx:id="passwordField" promptText="Password" 
+                          style="-fx-background-color: #ffffff;
+                                 -fx-text-fill: #222222;
+                                 -fx-prompt-text-fill: #888888;
+                                 -fx-background-radius: 8; 
+                                 -fx-font-size: 14;
+                                 -fx-padding: 12 18;
+                                 -fx-border-color: #e0e0e0;
+                                 -fx-border-width: 1;
+                                 -fx-border-radius: 8;"/>
+                                 
+            <PasswordField fx:id="confirmPasswordField" promptText="Confirm Password" 
+                          style="-fx-background-color: #ffffff;
+                                 -fx-text-fill: #222222;
+                                 -fx-prompt-text-fill: #888888;
+                                 -fx-background-radius: 8; 
+                                 -fx-font-size: 14;
+                                 -fx-padding: 12 18;
+                                 -fx-border-color: #e0e0e0;
+                                 -fx-border-width: 1;
+                                 -fx-border-radius: 8;"/>
+
+            <!-- Scholar-specific Fields -->
+            <VBox fx:id="scholarFields" spacing="10" visible="false" managed="false">
+                <Separator style="-fx-background-color: #cccccc; -fx-padding: 5 0;"/>
+                <Text text="Scholar Information" 
+                      style="-fx-font-size: 16; 
+                             -fx-font-weight: bold; 
+                             -fx-fill: #4CAF50;"/>
+                
+                <TextField fx:id="qualificationField" promptText="Qualification/Degree" 
+                          style="-fx-background-color: #ffffff;
+                                 -fx-text-fill: #222222;
+                                 -fx-prompt-text-fill: #888888;
+                                 -fx-background-radius: 8; 
+                                 -fx-font-size: 14;
+                                 -fx-padding: 12 18;
+                                 -fx-border-color: #e0e0e0;
+                                 -fx-border-width: 1;
+                                 -fx-border-radius: 8;"/>
+                                 
+                <TextField fx:id="specializationField" promptText="Specialization" 
+                          style="-fx-background-color: #ffffff;
+                                 -fx-text-fill: #222222;
+                                 -fx-prompt-text-fill: #888888;
+                                 -fx-background-radius: 8; 
+                                 -fx-font-size: 14;
+                                 -fx-padding: 12 18;
+                                 -fx-border-color: #e0e0e0;
+                                 -fx-border-width: 1;
+                                 -fx-border-radius: 8;"/>
+                                 
+                <TextArea fx:id="bioField" promptText="Brief Biography" 
+                         style="-fx-background-color: #ffffff;
+                                -fx-text-fill: #222222;
+                                -fx-prompt-text-fill: #888888;
+                                -fx-background-radius: 8; 
+                                -fx-font-size: 14;
+                                -fx-padding: 12 18;
+                                -fx-control-inner-background: #ffffff;
+                                -fx-highlight-fill: #2196F3;
+                                -fx-highlight-text-fill: white;
+                                -fx-text-box-border: #e0e0e0;
+                                -fx-focus-color: #2196F3;
+                                -fx-faint-focus-color: rgba(33,150,243,0.2);"
+                         prefRowCount="3"
+                         wrapText="true"/>
+            </VBox>
+
+            <Button fx:id="registerButton" text="Create Account" onAction="#handleRegister"
+                    style="-fx-background-color: #2196F3; 
+                           -fx-text-fill: white; 
+                           -fx-font-weight: bold;
+                           -fx-font-size: 14; 
+                           -fx-padding: 12 35; 
+                           -fx-background-radius: 8;
+                           -fx-cursor: hand;
+                           -fx-effect: dropshadow(gaussian, rgba(33,150,243,0.3), 5, 0, 0, 0);"/>
+                    
+            <Button fx:id="backToLoginButton" text="Back to Login" onAction="#navigateToLogin"
+                    style="-fx-background-color: transparent;
+                           -fx-border-color: #2196F3;
+                           -fx-border-width: 2;
+                           -fx-text-fill: #2196F3; 
+                           -fx-font-weight: bold;
+                           -fx-font-size: 14; 
+                           -fx-padding: 12 35; 
+                           -fx-background-radius: 8;
+                           -fx-border-radius: 8;
+                           -fx-cursor: hand;"/>
+        </VBox>
+        
+        <Label fx:id="messageLabel" 
+               style="-fx-text-fill: #FF5252;
+                      -fx-font-weight: bold;
+                      -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.5), 3, 0, 0, 0);"/>
+    </VBox>
+</StackPane> 

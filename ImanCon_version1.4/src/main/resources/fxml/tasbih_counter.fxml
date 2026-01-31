@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.shape.Circle?>
+<?import java.net.URL?>
+
+<VBox xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" 
+      fx:controller="com.faithapp.controllers.TasbihCounterController"
+      spacing="0" alignment="TOP_CENTER" style="-fx-background: linear-gradient(to bottom, #667eea 0%, #764ba2 100%);">
+    
+    <padding>
+        <Insets top="20" right="20" bottom="20" left="20"/>
+    </padding>
+
+    <!-- Header with Glass Effect -->
+    <VBox style="-fx-background-color: rgba(255, 255, 255, 0.1); -fx-background-radius: 10; -fx-padding: 15; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 8, 0, 0, 3);" spacing="10">
+        <HBox alignment="CENTER_LEFT" spacing="15">
+            <Button fx:id="backButton" text="← Back"
+                    style="-fx-background-color: rgba(255, 255, 255, 0.2); -fx-text-fill: white; -fx-font-size: 12; -fx-background-radius: 15; -fx-padding: 8 15; -fx-border-color: rgba(255, 255, 255, 0.3); -fx-border-width: 1; -fx-border-radius: 15;"
+                    onAction="#handleBack"/>
+            <Label text="📿 Tasbih Counter" 
+                   style="-fx-font-size: 24; -fx-font-weight: bold; -fx-text-fill: white; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.3), 2, 0, 0, 1);"/>
+            <Region HBox.hgrow="ALWAYS"/>
+            <Button fx:id="showSummaryButton" text="📊 Summary" onAction="#handleShowSummary"
+                    style="-fx-background-color: rgba(255, 255, 255, 0.2); -fx-text-fill: white; -fx-font-size: 12; -fx-background-radius: 15; -fx-padding: 8 15; -fx-border-color: rgba(255, 255, 255, 0.3); -fx-border-width: 1; -fx-border-radius: 15;"/>
+            <Button fx:id="fullSummaryButton" text="📈 Full Report" onAction="#handleFullSummaryPage"
+                    style="-fx-background-color: rgba(255, 255, 255, 0.2); -fx-text-fill: white; -fx-font-size: 12; -fx-background-radius: 15; -fx-padding: 8 15; -fx-border-color: rgba(255, 255, 255, 0.3); -fx-border-width: 1; -fx-border-radius: 15;"/>
+        </HBox>
+    </VBox>
+
+    <!-- Scrollable Main Content -->
+    <ScrollPane fitToWidth="true" VBox.vgrow="ALWAYS" style="-fx-background-color: transparent; -fx-border-color: transparent;">
+        <VBox spacing="15" alignment="TOP_CENTER" style="-fx-padding: 15 0 0 0;">
+            
+            <!-- Dhikr Selection Card -->
+            <VBox style="-fx-background-color: rgba(255, 255, 255, 0.95); -fx-background-radius: 15; -fx-padding: 20; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 8, 0, 0, 3);" spacing="10" maxWidth="500">
+                <Label text="🎯 Select Your Dhikr" 
+                       style="-fx-font-size: 16; -fx-text-fill: #4A5568; -fx-font-weight: bold; -fx-text-alignment: center;"/>
+                <ComboBox fx:id="dhikrComboBox" 
+                          style="-fx-background-color: #F7FAFC; -fx-text-fill: #2D3748; -fx-font-size: 14; -fx-min-width: 300; -fx-background-radius: 10; -fx-border-color: #E2E8F0; -fx-border-width: 2; -fx-border-radius: 10;"
+                          onAction="#handleDhikrChange"/>
+            </VBox>
+
+            <!-- Dhikr Display Card -->
+            <VBox style="-fx-background-color: rgba(255, 255, 255, 0.95); -fx-background-radius: 15; -fx-padding: 20; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 8, 0, 0, 3);" spacing="12" maxWidth="500">
+                <VBox spacing="10" alignment="CENTER">
+                    <Label fx:id="arabicDhikrLabel" 
+                           style="-fx-font-size: 28; -fx-text-fill: #667eea; -fx-font-family: 'Traditional Arabic'; -fx-font-weight: bold; -fx-text-alignment: center;"
+                           text="سُبْحَانَ اللّهِ"/>
+                    <Label fx:id="englishDhikrLabel"
+                           style="-fx-font-size: 20; -fx-text-fill: #4A5568; -fx-font-weight: 600; -fx-text-alignment: center;"
+                           text="SubhanAllah"/>
+                    <Label fx:id="banglaTranslationLabel"
+                           style="-fx-font-size: 14; -fx-text-fill: #718096; -fx-font-style: italic; -fx-text-alignment: center;"
+                           text="আল্লাহ পবিত্র মহান"/>
+                </VBox>
+            </VBox>
+
+            <!-- Counter Circle Card -->
+            <VBox style="-fx-background-color: rgba(255, 255, 255, 0.95); -fx-background-radius: 15; -fx-padding: 25; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 8, 0, 0, 3);" spacing="15" maxWidth="500">
+                <StackPane>
+                    <Circle fx:id="counterCircle" radius="80" 
+                            style="-fx-fill: linear-gradient(to bottom right, #667eea, #764ba2); -fx-stroke: #4A5568; -fx-stroke-width: 3; -fx-effect: dropshadow(gaussian, rgba(102, 126, 234, 0.4), 15, 0, 0, 8);"/>
+                    <VBox alignment="CENTER" spacing="5">
+                        <Label fx:id="counterLabel" text="0"
+                               style="-fx-font-size: 36; -fx-text-fill: white; -fx-font-weight: bold; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.3), 2, 0, 0, 1);"/>
+                        <Label fx:id="cycleLabel" text="Next Cycle: 1"
+                               style="-fx-font-size: 14; -fx-text-fill: white; -fx-font-weight: 600; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.3), 1, 0, 0, 1);"/>
+                    </VBox>
+                </StackPane>
+
+                <!-- Counter Controls -->
+                <HBox spacing="15" alignment="CENTER">
+                    <Button fx:id="countButton" text="➕ Count" 
+                            style="-fx-background: linear-gradient(to right, #667eea, #764ba2); -fx-text-fill: white; -fx-font-size: 16; -fx-font-weight: bold; -fx-min-width: 100; -fx-min-height: 40; -fx-background-radius: 20; -fx-effect: dropshadow(gaussian, rgba(102, 126, 234, 0.4), 8, 0, 0, 3);"
+                            onAction="#handleCount"/>
+                    
+                    <Button fx:id="resetButton" text="🔄 Reset"
+                            style="-fx-background-color: transparent; -fx-text-fill: #667eea; -fx-font-size: 16; -fx-font-weight: bold; -fx-min-width: 100; -fx-min-height: 40; -fx-background-radius: 20; -fx-border-color: #667eea; -fx-border-width: 2; -fx-border-radius: 20;"
+                            onAction="#handleReset"/>
+                </HBox>
+
+                <!-- Progress Section -->
+                <VBox spacing="8" alignment="CENTER">
+                    <Label text="🎯 Progress to next milestone (33)"
+                           style="-fx-text-fill: #4A5568; -fx-font-size: 14; -fx-font-weight: 600;"/>
+                    <ProgressBar fx:id="progressBar" progress="0.0" 
+                                style="-fx-accent: linear-gradient(to right, #667eea, #764ba2); -fx-pref-height: 8; -fx-background-radius: 4;"
+                                prefWidth="300"/>
+                </VBox>
+            </VBox>
+
+            <!-- Statistics and Save Entry Cards -->
+            <HBox spacing="15" maxWidth="500">
+                <VBox style="-fx-background-color: rgba(255, 255, 255, 0.95); -fx-background-radius: 15; -fx-padding: 20; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 8, 0, 0, 3);" spacing="10" HBox.hgrow="ALWAYS">
+                    <Label text="📊 Statistics" 
+                           style="-fx-font-size: 16; -fx-text-fill: #4A5568; -fx-font-weight: bold; -fx-text-alignment: center;"/>
+                    <VBox spacing="8" alignment="CENTER">
+                        <Label fx:id="totalCountLabel" text="Current Count: 0"
+                               style="-fx-font-size: 14; -fx-text-fill: #2D3748; -fx-font-weight: 600;"/>
+                        <Label fx:id="totalCyclesLabel" text="Completed Cycles: 0"
+                               style="-fx-font-size: 14; -fx-text-fill: #2D3748; -fx-font-weight: 600;"/>
+                    </VBox>
+                </VBox>
+                
+                <!-- Save Entry Card -->
+                <VBox style="-fx-background-color: rgba(255, 255, 255, 0.95); -fx-background-radius: 15; -fx-padding: 20; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 8, 0, 0, 3);" spacing="10" HBox.hgrow="ALWAYS">
+                    <Label text="💾 Save Entry" 
+                           style="-fx-font-size: 16; -fx-text-fill: #4A5568; -fx-font-weight: bold; -fx-text-alignment: center;"/>
+                    
+                    <VBox spacing="8">
+                        <HBox spacing="8" alignment="CENTER_LEFT">
+                            <Label text="📅 Date:" style="-fx-font-size: 12; -fx-text-fill: #4A5568; -fx-font-weight: 600;"/>
+                            <DatePicker fx:id="entryDatePicker" style="-fx-font-size: 11; -fx-background-radius: 8;"/>
+                        </HBox>
+                        
+                        <VBox spacing="5">
+                            <Label text="📝 Notes:" style="-fx-font-size: 12; -fx-text-fill: #4A5568; -fx-font-weight: 600;"/>
+                            <TextArea fx:id="notesTextArea" promptText="Add any notes about your dhikr session..."
+                                      style="-fx-font-size: 11; -fx-background-radius: 8; -fx-border-radius: 8;" prefRowCount="2"/>
+                        </VBox>
+                        
+                        <Button fx:id="saveButton" text="💾 Save as Cycle" onAction="#handleSave"
+                                style="-fx-background: linear-gradient(to right, #48BB78, #38A169); -fx-text-fill: white; -fx-font-size: 14; -fx-font-weight: bold; -fx-background-radius: 10; -fx-padding: 8 15; -fx-effect: dropshadow(gaussian, rgba(72, 187, 120, 0.4), 6, 0, 0, 2);"/>
+                    </VBox>
+                </VBox>
+            </HBox>
+        </VBox>
+    </ScrollPane>
+    
+    <stylesheets>
+        <URL value="@../styles/tasbih_counter.css"/>
+    </stylesheets>
+</VBox> 

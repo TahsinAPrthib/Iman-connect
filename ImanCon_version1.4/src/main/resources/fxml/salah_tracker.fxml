@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.text.*?>
+<?import java.net.URL?>
+
+<VBox xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" 
+      fx:controller="com.faithapp.controllers.SalahTrackerController"
+      styleClass="salah-tracker-main"
+      VBox.vgrow="ALWAYS">
+    
+    <!-- Fixed Header Section -->
+    <HBox alignment="CENTER_LEFT" spacing="20" styleClass="header-section">
+        <Button fx:id="backButton" text="← Back to Dashboard" onAction="#handleBackToDashboard"
+                styleClass="back-button"/>
+        <VBox spacing="5">
+            <Label text="🕌 Salah Tracker" styleClass="main-title"/>
+            <Label text="Track your daily prayers with devotion and mindfulness" styleClass="subtitle"/>
+        </VBox>
+        <Region HBox.hgrow="ALWAYS"/>
+        <VBox alignment="CENTER_RIGHT" spacing="5">
+            <Label fx:id="dateLabel" text="Today's Date" styleClass="date-label"/>
+            <HBox spacing="10">
+                <Button text="📊 Show Summary" onAction="#handleShowSummary" styleClass="secondary-button"/>
+                <Button text="📋 Full Summary" onAction="#handleOpenSummaryPage" styleClass="secondary-button"/>
+            </HBox>
+        </VBox>
+    </HBox>
+    
+    <!-- Scrollable Main Content -->
+    <ScrollPane fitToWidth="true" styleClass="main-scroll-pane" VBox.vgrow="ALWAYS">
+        <VBox spacing="25" styleClass="main-content">
+            <padding>
+                <Insets top="30" right="30" bottom="30" left="30"/>
+            </padding>
+
+            <!-- Daily Progress Overview -->
+            <VBox styleClass="progress-overview-card" spacing="15">
+                <Label text="📈 Today's Prayer Progress" styleClass="section-title"/>
+                <HBox spacing="30" alignment="CENTER">
+                    <VBox styleClass="progress-stat" spacing="5">
+                        <Label text="✅" styleClass="stat-icon"/>
+                        <Label fx:id="onTimeCountLabel" text="0" styleClass="stat-number"/>
+                        <Label text="On Time" styleClass="stat-label"/>
+                    </VBox>
+                    <VBox styleClass="progress-stat" spacing="5">
+                        <Label text="⏰" styleClass="stat-icon"/>
+                        <Label fx:id="lateCountLabel" text="0" styleClass="stat-number"/>
+                        <Label text="Late" styleClass="stat-label"/>
+                    </VBox>
+                    <VBox styleClass="progress-stat" spacing="5">
+                        <Label text="❌" styleClass="stat-icon"/>
+                        <Label fx:id="missedCountLabel" text="0" styleClass="stat-number"/>
+                        <Label text="Missed" styleClass="stat-label"/>
+                    </VBox>
+                    <VBox styleClass="progress-stat" spacing="5">
+                        <Label text="📊" styleClass="stat-icon"/>
+                        <Label fx:id="completionRateLabel" text="0%" styleClass="stat-number"/>
+                        <Label text="Completion" styleClass="stat-label"/>
+                    </VBox>
+                </HBox>
+                <ProgressBar fx:id="dailyProgress" progress="0.0" styleClass="main-progress-bar"/>
+            </VBox>
+
+            <!-- Prayer Times Grid -->
+            <VBox spacing="20">
+                <Label text="🕐 Prayer Times &amp; Status" styleClass="section-title"/>
+                <GridPane vgap="20" hgap="20" styleClass="prayer-grid">
+                    <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="200"/>
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="200"/>
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="200"/>
+                    </columnConstraints>
+                    
+                    <!-- Fajr -->
+                    <VBox styleClass="prayer-card fajr-card" GridPane.columnIndex="0" GridPane.rowIndex="0">
+                        <HBox alignment="CENTER_LEFT" spacing="10">
+                            <Label text="🌅" styleClass="prayer-icon"/>
+                            <VBox spacing="2">
+                                <Label text="Fajr" styleClass="prayer-name"/>
+                                <Label fx:id="fajrTimeLabel" text="05:30 AM" styleClass="prayer-time"/>
+                            </VBox>
+                        </HBox>
+                        <VBox spacing="8" styleClass="status-section">
+                            <RadioButton fx:id="fajrOnTimeRadio" text="✅ On Time" styleClass="status-radio"/>
+                            <RadioButton fx:id="fajrLateRadio" text="⏰ Late" styleClass="status-radio"/>
+                            <RadioButton fx:id="fajrMissedRadio" text="❌ Missed" styleClass="status-radio"/>
+                        </VBox>
+                        <Label fx:id="fajrStatusLabel" styleClass="status-indicator"/>
+                    </VBox>
+                    
+                    <!-- Dhuhr -->
+                    <VBox styleClass="prayer-card dhuhr-card" GridPane.columnIndex="1" GridPane.rowIndex="0">
+                        <HBox alignment="CENTER_LEFT" spacing="10">
+                            <Label text="☀️" styleClass="prayer-icon"/>
+                            <VBox spacing="2">
+                                <Label text="Dhuhr" styleClass="prayer-name"/>
+                                <Label fx:id="dhuhrTimeLabel" text="01:30 PM" styleClass="prayer-time"/>
+                            </VBox>
+                        </HBox>
+                        <VBox spacing="8" styleClass="status-section">
+                            <RadioButton fx:id="dhuhrOnTimeRadio" text="✅ On Time" styleClass="status-radio"/>
+                            <RadioButton fx:id="dhuhrLateRadio" text="⏰ Late" styleClass="status-radio"/>
+                            <RadioButton fx:id="dhuhrMissedRadio" text="❌ Missed" styleClass="status-radio"/>
+                        </VBox>
+                        <Label fx:id="dhuhrStatusLabel" styleClass="status-indicator"/>
+                    </VBox>
+                    
+                    <!-- Asr -->
+                    <VBox styleClass="prayer-card asr-card" GridPane.columnIndex="2" GridPane.rowIndex="0">
+                        <HBox alignment="CENTER_LEFT" spacing="10">
+                            <Label text="🌤️" styleClass="prayer-icon"/>
+                            <VBox spacing="2">
+                                <Label text="Asr" styleClass="prayer-name"/>
+                                <Label fx:id="asrTimeLabel" text="04:30 PM" styleClass="prayer-time"/>
+                            </VBox>
+                        </HBox>
+                        <VBox spacing="8" styleClass="status-section">
+                            <RadioButton fx:id="asrOnTimeRadio" text="✅ On Time" styleClass="status-radio"/>
+                            <RadioButton fx:id="asrLateRadio" text="⏰ Late" styleClass="status-radio"/>
+                            <RadioButton fx:id="asrMissedRadio" text="❌ Missed" styleClass="status-radio"/>
+                        </VBox>
+                        <Label fx:id="asrStatusLabel" styleClass="status-indicator"/>
+                    </VBox>
+                    
+                    <!-- Maghrib -->
+                    <VBox styleClass="prayer-card maghrib-card" GridPane.columnIndex="0" GridPane.rowIndex="1">
+                        <HBox alignment="CENTER_LEFT" spacing="10">
+                            <Label text="🌆" styleClass="prayer-icon"/>
+                            <VBox spacing="2">
+                                <Label text="Maghrib" styleClass="prayer-name"/>
+                                <Label fx:id="maghribTimeLabel" text="07:30 PM" styleClass="prayer-time"/>
+                            </VBox>
+                        </HBox>
+                        <VBox spacing="8" styleClass="status-section">
+                            <RadioButton fx:id="maghribOnTimeRadio" text="✅ On Time" styleClass="status-radio"/>
+                            <RadioButton fx:id="maghribLateRadio" text="⏰ Late" styleClass="status-radio"/>
+                            <RadioButton fx:id="maghribMissedRadio" text="❌ Missed" styleClass="status-radio"/>
+                        </VBox>
+                        <Label fx:id="maghribStatusLabel" styleClass="status-indicator"/>
+                    </VBox>
+                    
+                    <!-- Isha -->
+                    <VBox styleClass="prayer-card isha-card" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                        <HBox alignment="CENTER_LEFT" spacing="10">
+                            <Label text="🌙" styleClass="prayer-icon"/>
+                            <VBox spacing="2">
+                                <Label text="Isha" styleClass="prayer-name"/>
+                                <Label fx:id="ishaTimeLabel" text="09:00 PM" styleClass="prayer-time"/>
+                            </VBox>
+                        </HBox>
+                        <VBox spacing="8" styleClass="status-section">
+                            <RadioButton fx:id="ishaOnTimeRadio" text="✅ On Time" styleClass="status-radio"/>
+                            <RadioButton fx:id="ishaLateRadio" text="⏰ Late" styleClass="status-radio"/>
+                            <RadioButton fx:id="ishaMissedRadio" text="❌ Missed" styleClass="status-radio"/>
+                        </VBox>
+                        <Label fx:id="ishaStatusLabel" styleClass="status-indicator"/>
+                    </VBox>
+                    
+                    <!-- Quick Actions -->
+                    <VBox styleClass="quick-actions-card" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                        <Label text="⚡ Quick Actions" styleClass="section-title"/>
+                        <VBox spacing="12">
+                            <Button text="🔄 Reset Today" onAction="#handleResetToday" styleClass="action-button"/>
+                            <Button text="📅 Change Date" onAction="#handleChangeDate" styleClass="action-button"/>
+                            <Button text="📊 View History" onAction="#handleViewHistory" styleClass="action-button"/>
+                            <Button text="🎯 Set Goals" onAction="#handleSetGoals" styleClass="action-button"/>
+                        </VBox>
+                    </VBox>
+                </GridPane>
+            </VBox>
+
+            <!-- Save Section -->
+            <VBox styleClass="save-section" spacing="15">
+                <Label text="💾 Save Your Progress" styleClass="section-title"/>
+                <HBox spacing="15" alignment="CENTER">
+                    <Button text="💾 Save Now" onAction="#handleSaveNow" styleClass="primary-button"/>
+                    <Button text="📤 Auto Save" onAction="#handleAutoSave" styleClass="secondary-button"/>
+                    <Button text="📋 Export Data" onAction="#handleExportData" styleClass="secondary-button"/>
+                </HBox>
+            </VBox>
+        </VBox>
+    </ScrollPane>
+    
+    <stylesheets>
+        <URL value="@../styles/salah_tracker.css"/>
+    </stylesheets>
+</VBox> 

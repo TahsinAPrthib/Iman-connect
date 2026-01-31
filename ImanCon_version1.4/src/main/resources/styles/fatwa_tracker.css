@@ -1,0 +1,144 @@
+/* Fatwa Tracker Styles */
+
+.root {
+    -fx-background-color: #f8f9fa;
+    -fx-font-family: 'Segoe UI', Arial, sans-serif;
+}
+
+.header-section {
+    -fx-background-color: #4CAF50;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 10, 0, 0, 2);
+}
+
+.header-bar {
+    -fx-padding: 10 0;
+}
+
+.user-name-label {
+    -fx-font-size: 20px;
+    -fx-font-weight: bold;
+    -fx-text-fill: white;
+}
+
+.primary-button {
+    -fx-background-color: #4CAF50;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-background-radius: 5;
+    -fx-padding: 10 20;
+    -fx-cursor: hand;
+}
+
+.secondary-button {
+    -fx-background-color: #2196F3;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-background-radius: 5;
+    -fx-padding: 10 20;
+    -fx-cursor: hand;
+}
+
+.main-content {
+    -fx-background-color: white;
+    -fx-padding: 20;
+}
+
+.question-form {
+    -fx-background-color: #f5f5f5;
+    -fx-padding: 20;
+    -fx-background-radius: 10;
+    -fx-border-color: #4CAF50;
+    -fx-border-width: 2;
+    -fx-border-radius: 10;
+}
+
+.input-field {
+    -fx-background-color: white;
+    -fx-text-fill: #333333;
+    -fx-prompt-text-fill: #888888;
+    -fx-background-radius: 5;
+    -fx-font-size: 14px;
+    -fx-padding: 10 15;
+    -fx-border-color: #e0e0e0;
+    -fx-border-width: 1;
+    -fx-border-radius: 5;
+}
+
+.textarea-field {
+    -fx-background-color: white;
+    -fx-text-fill: #333333;
+    -fx-prompt-text-fill: #888888;
+    -fx-background-radius: 5;
+    -fx-font-size: 14px;
+    -fx-padding: 10 15;
+    -fx-border-color: #e0e0e0;
+    -fx-border-width: 1;
+    -fx-border-radius: 5;
+}
+
+.combo-box {
+    -fx-background-color: white;
+    -fx-text-fill: #333333;
+    -fx-background-radius: 5;
+    -fx-font-size: 14px;
+    -fx-padding: 8 12;
+    -fx-border-color: #e0e0e0;
+    -fx-border-width: 1;
+    -fx-border-radius: 5;
+}
+
+.field-label {
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #333333;
+}
+
+.table-section {
+    -fx-background-color: white;
+    -fx-padding: 15;
+    -fx-background-radius: 10;
+    -fx-border-color: #e0e0e0;
+    -fx-border-width: 1;
+    -fx-border-radius: 10;
+}
+
+.section-title {
+    -fx-font-size: 18px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #333333;
+}
+
+.questions-table {
+    -fx-background-color: transparent;
+}
+
+.table-column {
+    -fx-font-size: 12px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #333333;
+}
+
+.table-view .column-header {
+    -fx-background-color: #4CAF50;
+    -fx-text-fill: white;
+}
+
+.table-view .column-header .label {
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+}
+
+.table-row-cell {
+    -fx-background-color: white;
+    -fx-border-color: #f0f0f0;
+    -fx-border-width: 0 0 1 0;
+}
+
+.table-row-cell:odd {
+    -fx-background-color: #fafafa;
+}
+
+.table-row-cell:selected {
+    -fx-background-color: #e8f5e8;
+    -fx-text-fill: #333333;
+} 

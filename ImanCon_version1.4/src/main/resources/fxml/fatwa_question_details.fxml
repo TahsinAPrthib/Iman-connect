@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.faithapp.controllers.FatwaQuestionDetailsController">
+   <top>
+      <VBox styleClass="header-section" spacing="10">
+         <children>
+            <HBox alignment="CENTER_LEFT" spacing="20" styleClass="header-bar">
+               <children>
+                  <Label text="Fatwa Question Details" styleClass="title-label" />
+                  <Region HBox.hgrow="ALWAYS" />
+                  <Button fx:id="closeButton" text="Close" onAction="#handleClose" styleClass="secondary-button" />
+               </children>
+            </HBox>
+         </children>
+         <padding>
+            <Insets top="15" right="20" bottom="15" left="20" />
+         </padding>
+      </VBox>
+   </top>
+   
+   <center>
+      <VBox spacing="20" styleClass="main-content">
+         <children>
+            <Label fx:id="questionTitleLabel" styleClass="title-label" />
+            <Label fx:id="userNameLabel" styleClass="subtitle-label" />
+            <Label fx:id="categoryLabel" styleClass="info-label" />
+            <Label fx:id="priorityLabel" styleClass="info-label" />
+            <Label fx:id="statusLabel" styleClass="info-label" />
+            <Label fx:id="dateLabel" styleClass="info-label" />
+            
+            <Label text="Question Details:" styleClass="field-label" />
+            <TextArea fx:id="questionTextArea" editable="false" styleClass="question-text-area" prefRowCount="6" />
+            
+            <VBox fx:id="answerSection" spacing="15" styleClass="answer-section">
+               <children>
+                  <Label text="Your Answer" styleClass="section-title" />
+                  <TextArea fx:id="answerTextArea" promptText="Provide a detailed answer..." styleClass="textarea-field" prefRowCount="8" />
+                  <TextArea fx:id="referencesTextArea" promptText="Include references..." styleClass="textarea-field" prefRowCount="4" />
+                  <CheckBox fx:id="publicAnswerCheckBox" text="Make this answer public" selected="true" />
+                  <Button fx:id="submitAnswerButton" text="Submit Answer" onAction="#handleSubmitAnswer" styleClass="primary-button" />
+               </children>
+            </VBox>
+            
+            <VBox fx:id="existingAnswerSection" spacing="15" styleClass="existing-answer-section" visible="false" managed="false">
+               <children>
+                  <Label text="Existing Answer" styleClass="section-title" />
+                  <Label fx:id="existingAnswerLabel" styleClass="answer-text" wrapText="true" />
+                  <Label fx:id="existingReferencesLabel" styleClass="references-text" wrapText="true" />
+                  <Label fx:id="answerDateLabel" styleClass="date-label" />
+               </children>
+            </VBox>
+         </children>
+         <padding>
+            <Insets top="20" right="20" bottom="20" left="20" />
+         </padding>
+      </VBox>
+   </center>
+</BorderPane> 

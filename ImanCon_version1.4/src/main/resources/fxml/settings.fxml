@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<VBox xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" 
+      fx:controller="com.faithapp.controllers.SettingsController"
+      spacing="20" style="-fx-background-color: #ffffff;"
+      prefWidth="400" prefHeight="500">
+    
+    <padding>
+        <Insets top="20" right="20" bottom="20" left="20"/>
+    </padding>
+    
+    <!-- Back Button -->
+    <Button text="← Back to Dashboard" onAction="#handleBackToDashboard"
+            style="-fx-background-color: #2196F3; -fx-text-fill: white; -fx-font-size: 14; -fx-background-radius: 5; -fx-padding: 8 18;"/>
+    
+    <Label text="Settings" 
+           style="-fx-font-size: 24; -fx-font-weight: bold; -fx-text-fill: #2196F3;"/>
+           
+    <!-- Admin Section -->
+    <VBox spacing="10" style="-fx-background-color: #f5f5f5; -fx-padding: 15; -fx-background-radius: 10;">
+        <Label text="Admin Tools" style="-fx-font-size: 18; -fx-text-fill: #2196F3;"/>
+        <Button text="View Registered Accounts" onAction="#openAdminView"
+                style="-fx-background-color: transparent;
+                       -fx-text-fill: #222222;
+                       -fx-border-color: #2196F3;
+                       -fx-border-width: 1;
+                       -fx-min-width: 200;"/>
+    </VBox>
+    
+    <!-- User Settings Section -->
+    <TitledPane text="User Settings" 
+                style="-fx-text-fill: #222222;">
+        <VBox spacing="10" style="-fx-background-color: #f5f5f5; -fx-padding: 15; -fx-background-radius: 10;">
+            <TextField fx:id="fullNameField" promptText="Full Name"
+                      style="-fx-background-color: #ffffff; -fx-text-fill: #222222;"/>
+            <TextField fx:id="emailField" promptText="Email"
+                      style="-fx-background-color: #ffffff; -fx-text-fill: #222222;"/>
+            <Button text="Change Password" onAction="#handleChangePassword"
+                    style="-fx-background-color: #2196F3; -fx-text-fill: white;"/>
+        </VBox>
+    </TitledPane>
+    
+    <!-- Notification Settings -->
+    <TitledPane text="Notifications" 
+                style="-fx-text-fill: #222222;">
+        <VBox spacing="10" style="-fx-background-color: #f5f5f5; -fx-padding: 15; -fx-background-radius: 10;">
+            <CheckBox fx:id="prayerNotificationsCheck" text="Prayer Time Notifications"
+                      style="-fx-text-fill: #222222;"/>
+            <CheckBox fx:id="quranNotificationsCheck" text="Daily Quran Reminder"
+                      style="-fx-text-fill: #222222;"/>
+            <CheckBox fx:id="zikrNotificationsCheck" text="Zikr Reminders"
+                      style="-fx-text-fill: #222222;"/>
+        </VBox>
+    </TitledPane>
+    
+    <!-- App Settings -->
+    <TitledPane text="App Settings" 
+                style="-fx-text-fill: #222222;">
+        <VBox spacing="10" style="-fx-background-color: #f5f5f5; -fx-padding: 15; -fx-background-radius: 10;">
+            <CheckBox fx:id="darkModeCheck" text="Dark Mode" selected="true"
+                      style="-fx-text-fill: #222222;"/>
+            <ComboBox fx:id="languageCombo" promptText="Language"
+                      style="-fx-background-color: #ffffff; -fx-text-fill: #222222;"/>
+        </VBox>
+    </TitledPane>
+    
+    <Region VBox.vgrow="ALWAYS"/>
+    
+    <!-- Save Button -->
+    <Button text="Save Changes" onAction="#handleSave"
+            style="-fx-background-color: #2196F3; 
+                   -fx-text-fill: white;
+                   -fx-font-size: 16;
+                   -fx-padding: 10 20;"/>
+</VBox> 
